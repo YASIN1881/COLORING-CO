@@ -2,8 +2,20 @@ import { FaPhone } from 'react-icons/fa6';
 
 const Hero = () => {
     return (
-        <div className="bg-zinc-900 relative overflow-hidden min-h-screen">
-            <div className="container mx-auto px-4 py-12 lg:py-20">
+        <div className="relative overflow-hidden min-h-screen">
+            {/* Background Image Layer */}
+            <div className="absolute inset-0">
+                <img 
+                    src="/img/service-bg-3-1.png" 
+                    alt="Background pattern" 
+                    className="w-full h-full object-cover opacity-10"
+                />
+                {/* Glass Effect Overlay */}
+                <div className="absolute inset-0 bg-zinc-900/90 backdrop-blur-sm"></div>
+            </div>
+            
+            {/* Main Content Container */}
+            <div className="relative container mx-auto px-4 py-12 lg:py-20">
                 <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
                     {/* Left Side - Creative Image Section */}
                     <div className="relative w-full lg:w-1/2 py-10">
@@ -125,7 +137,11 @@ const Hero = () => {
                     <div className="w-full lg:w-1/2 text-white space-y-6 sm:space-y-8">
                         {/* Welcome Text */}
                         <div className="flex items-center gap-2">
-                            <span className="text-amber-500 text-xl">›</span>
+                            <img 
+                                src="/FIVEICON.png" 
+                                alt="Coloring co" 
+                                className="w-8 h-8 object-contain"
+                            />
                             <span className="text-amber-500 tracking-wider font-medium">
                                 WELCOME TO COLORING CO
                             </span>

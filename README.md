@@ -72,3 +72,42 @@ src/
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
+# Recent Updates
+
+## Services Component Enhancements
+
+- Added curved design to service cards with smooth corner transitions
+- Improved button placement in curved corner area
+- Enhanced hover effects and animations
+- Updated styling with custom clip-path for modern look
+- Added smooth transitions for color changes and scaling effects
+
+## Styling Updates
+
+- Implemented custom CSS animations and transitions
+- Added new hover effects for interactive elements
+- Enhanced visual hierarchy with gradient overlays
+- Improved responsive design for all screen sizes
+
+## How to Run
+
+1. Clone the repository
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+## Technologies Used
+
+- React
+- Framer Motion
+- Tailwind CSS
+- Custom CSS animations
