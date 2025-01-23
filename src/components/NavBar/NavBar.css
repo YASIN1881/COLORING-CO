@@ -1,0 +1,70 @@
+/* .appointment-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px; 
+  overflow: visible; 
+}
+
+.appointment-wrapper::before {
+  content: "";
+  background: url("/img/menu-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 410px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) matrix(1, 0, 0, -1, 0, 0);
+  z-index: -1;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+}
+
+.appointment-wrapper::after {
+  content: "";
+  background-color: #df9e42;
+  border-top-left-radius: 70%;
+  border-bottom-left-radius: 70%;
+  width: 346px;
+  height: 100%;
+  position: fixed;
+  left: 100%;
+  top: 0;
+} */
+
+.appointment-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  overflow: visible;
+}
+
+.appointment-wrapper::before {
+  content: "";
+  background: url("/img/menu-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 410px;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) matrix(1, 0, 0, -1, 0, 0);
+  z-index: -1;
+  mix-blend-mode: multiply;
+  opacity: 0.3;
+}
+
+.appointment-wrapper::after {
+  content: "";
+  background-color: #df9e42;
+  width: 999px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: -2;
+}
