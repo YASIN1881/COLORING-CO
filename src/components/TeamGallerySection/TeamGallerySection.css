@@ -1,0 +1,173 @@
+/* Animations */
+@keyframes slideUpFade {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) rotate(45deg);
+  }
+  100% {
+    transform: translateX(100%) rotate(45deg);
+  }
+}
+
+/* Social Icons Animation - Updated to match TopBar */
+.social-icon {
+  transition: all 0.5s ease-out;
+  overflow: hidden;
+  position: relative;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.social-icon:hover {
+  background: linear-gradient(to right, #f59e0b, #d97706);
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgb(245 158 11 / 0.3);
+}
+
+.social-icon svg {
+  position: relative;
+  z-index: 2;
+  transition: all 0.5s ease-out;
+  color: white;
+  opacity: 0.9;
+}
+
+.social-icon:hover svg {
+  color: white;
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Gallery Image Hover */
+.gallery-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%) rotate(45deg);
+  animation: shine 3s infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.gallery-image:hover::after {
+  opacity: 1;
+}
+
+/* Team Member Card */
+.team-member-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.team-member-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.team-member-card:hover::before {
+  opacity: 1;
+}
+
+/* Perspective Text Effect */
+.perspective-text {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  padding: 0.5em 0;
+}
+
+/* Text Animation Effects */
+.perspective-text h2 {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease;
+}
+
+.perspective-text h2:hover {
+  transform: translateZ(20px);
+}
+
+/* Button Hover Effect */
+.group:hover .bg-white {
+  transform: scaleX(1);
+}
+
+.group:hover span {
+  color: #f59e0b;
+}
+
+/* Section Title Animation */
+.section-title {
+  animation: slideUpFade 1s ease forwards;
+}
+
+/* View All Button Animation */
+.view-all-btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.view-all-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%) rotate(45deg);
+  transition: transform 0.6s ease;
+}
+
+.view-all-btn:hover::before {
+  transform: translateX(100%) rotate(45deg);
+}
