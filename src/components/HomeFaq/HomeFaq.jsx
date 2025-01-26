@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const FAQ = () => {
+const HomeFaq = () => {
     const [openQuestion, setOpenQuestion] = useState(3);
 
     const questions = [
@@ -127,4 +127,4 @@ const FAQ = () => {
     );
 };
 
-export default FAQ;
+export default HomeFaq;

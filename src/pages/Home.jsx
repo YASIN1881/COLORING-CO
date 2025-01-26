@@ -2,11 +2,11 @@ import Slider from '../components/Slider/Slider';
 import Features from '../components/Features/Features';
 import Hero from '../components/Hero/Hero';
 import Services from '../components/Services/Services';
-import FAQ from '../components/FAQ/FAQ';
 import Projects from '../components/Projects/Projects';
 import Testimonials from '../components/Testimonials/Testimonials';
 import TeamGallerySection from '../components/TeamGallerySection/TeamGallerySection';
 import BlogSection from '../components/BlogSection/BlogSection';
+import HomeFaq from '../components/HomeFaq/HomeFaq';
 
 const topImages = [
     { src: '/img/instagram-1-1.webp', alt: 'instagram-1-1', href: 'javascript:void(0)' },
@@ -81,7 +81,7 @@ const Home = () => {
             <Features />
             <Hero />
             <Services />
-            <FAQ />
+            <HomeFaq />
             <Projects />
             <Testimonials />
             <TeamGallerySection 
