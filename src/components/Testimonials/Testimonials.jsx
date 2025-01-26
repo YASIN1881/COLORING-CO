@@ -53,8 +53,8 @@ const Testimonials = () => {
     };
 
     return (
-        <div className="bg-[#1a1a1a] px-4 py-16 md:px-8 lg:px-16">
-            <div className="container mx-auto">
+        <div className="w-full bg-[#2E2A20] py-16 md:py-20">
+            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px]">
                 {/* Header */}
                 <div className="text-center mb-12">
                     <div className="flex items-center justify-center gap-2 mb-4">
@@ -82,7 +82,7 @@ const Testimonials = () => {
                                     </div>
                                     
                                     {/* Quote content */}
-                                    <div className="text-center pt-24 space-y-6"> {/* Increased top padding to accommodate quotes */}
+                                    <div className="text-center pt-24 space-y-6">
                                         <p className="text-gray-800 text-xl md:text-2xl italic leading-relaxed">
                                             {testimonials[currentSlide].quote}
                                         </p>

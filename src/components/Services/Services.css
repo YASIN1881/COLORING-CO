@@ -10,3 +10,40 @@
 .animate-scroll {
   animation: scroll 20s linear infinite;
 }
+
+.title-item {
+  transform-origin: center;
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+}
+
+.title-item:hover {
+  transform: scale(1.1);
+  color: #fcd34d;
+}
+
+.star-rotate {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Ensure titles don't go under other elements */
+.slider-container {
+  z-index: 2;
+  position: relative;
+}
+
+.title-item {
+  position: relative;
+  z-index: 2;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}

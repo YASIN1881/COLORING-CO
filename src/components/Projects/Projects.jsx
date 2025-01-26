@@ -43,8 +43,8 @@ const Projects = () => {
     }, []);
 
     return (
-        <div className="bg-[#2E2A20] px-4 py-16 md:px-8 lg:px-16">
-            <div className="container mx-auto">
+        <div className="w-full bg-[#2E2A20] py-16 md:py-20">
+            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px]">
                 {/* Header Section */}
                 <div className="max-w-2xl mb-12">
                     <div className="flex items-center gap-2 mb-4">
