@@ -32,11 +32,11 @@ const HomeFaq = () => {
     ];
 
     return (
-        <div className="w-full bg-[#2E2A20] py-16 md:py-20">
-            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px]">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="w-full bg-[#2E2A20] py-12 sm:py-14 md:py-16 lg:py-20">
+            <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 max-w-[1400px]">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
                     {/* Left Side - FAQ Accordion */}
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                         {questions.map((q) => (
                             <div 
                                 key={q.id}
@@ -44,25 +44,25 @@ const HomeFaq = () => {
                                     openQuestion === q.id 
                                         ? 'bg-amber-500' 
                                         : 'bg-[#F5F5F4]'
-                                } rounded-2xl overflow-hidden`}
+                                } rounded-xl sm:rounded-2xl overflow-hidden`}
                             >
                                 <button
                                     onClick={() => setOpenQuestion(openQuestion === q.id ? null : q.id)}
-                                    className="w-full px-8 py-5 flex items-center justify-between"
+                                    className="w-full px-5 sm:px-8 py-4 sm:py-5 flex items-center justify-between"
                                 >
-                                    <div className="flex items-center gap-4">
-                                        <div className={`relative w-11 h-11 rounded-full flex items-center justify-center transition-colors duration-300 ${
+                                    <div className="flex items-center gap-3 sm:gap-4">
+                                        <div className={`relative w-9 h-9 sm:w-11 sm:h-11 rounded-full flex items-center justify-center transition-colors duration-300 ${
                                             openQuestion === q.id 
                                                 ? 'bg-white/20' 
                                                 : 'bg-[#2E2A20]'
                                         }`}>
                                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-                                                <span className="text-white text-2xl font-normal select-none">
+                                                <span className="text-white text-xl sm:text-2xl font-normal select-none">
                                                     {openQuestion === q.id ? '−' : '+'}
                                                 </span>
                                             </div>
                                         </div>
-                                        <span className={`font-medium text-lg transition-colors duration-300 ${
+                                        <span className={`font-medium text-base sm:text-lg transition-colors duration-300 text-left ${
                                             openQuestion === q.id ? 'text-white' : 'text-[#2E2A20]'
                                         }`}>
                                             {q.question}
@@ -75,7 +75,7 @@ const HomeFaq = () => {
                                     }`}
                                 >
                                     <div className="overflow-hidden">
-                                        <div className="px-8 pb-5 text-white ml-14">
+                                        <div className="px-5 sm:px-8 pb-4 sm:pb-5 text-white ml-12 sm:ml-14 text-sm sm:text-base">
                                             {q.answer}
                                         </div>
                                     </div>
@@ -85,65 +85,65 @@ const HomeFaq = () => {
                     </div>
 
                     {/* Right Side - Content */}
-                    <div className="space-y-4">
+                    <div className="space-y-6 sm:space-y-8">
                         {/* Title Section */}
                         <div>
-                            <div className="flex items-center gap-2 mb-4">
+                            <div className="flex items-center gap-2 mb-3 sm:mb-4">
                                 <img 
                                     src="/FIVEICON.png" 
                                     alt="Coloring Co Logo" 
-                                    className="w-8 h-8 object-contain"
+                                    className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
                                 />
-                                <span className="text-amber-500 uppercase tracking-wider text-sm font-medium">
+                                <span className="text-amber-500 uppercase tracking-wider text-xs sm:text-sm font-medium">
                                     Frequently Asked Questions
                                 </span>
                             </div>
 
-                            <h2 className="text-4xl lg:text-5xl font-bold text-white leading-tight mb-4">
+                            <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 sm:mb-4">
                                 Expert Painting Solutions by Coloring Co
                             </h2>
 
-                            <p className="text-gray-400/90 text-lg">
+                            <p className="text-gray-400/90 text-sm sm:text-base md:text-lg">
                                 Transform your space with Coloring Co's professional painting services. We bring expertise, quality materials, and attention to detail to every project, ensuring outstanding results that exceed your expectations.
                             </p>
                         </div>
 
                         {/* Features and Image Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
                             {/* Left Side - Features List */}
-                            <div className="space-y-6 py-4">
-                                <div className="flex items-center gap-4">
-                                    <div className="w-6 h-6 flex items-center justify-center">
-                                        <span className="text-amber-500 text-xl">✓</span>
+                            <div className="space-y-4 sm:space-y-6 py-3 sm:py-4">
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
+                                        <span className="text-amber-500 text-lg sm:text-xl">✓</span>
                                     </div>
-                                    <span className="text-gray-200 text-lg">Licensed & Insured Professionals</span>
+                                    <span className="text-gray-200 text-base sm:text-lg">Licensed & Insured Professionals</span>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-6 h-6 flex items-center justify-center">
-                                        <span className="text-amber-500 text-xl">✓</span>
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
+                                        <span className="text-amber-500 text-lg sm:text-xl">✓</span>
                                     </div>
-                                    <span className="text-gray-200 text-lg">Premium Quality Materials</span>
+                                    <span className="text-gray-200 text-base sm:text-lg">Premium Quality Materials</span>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-6 h-6 flex items-center justify-center">
-                                        <span className="text-amber-500 text-xl">✓</span>
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
+                                        <span className="text-amber-500 text-lg sm:text-xl">✓</span>
                                     </div>
-                                    <span className="text-gray-200 text-lg">100% Customer Satisfaction</span>
+                                    <span className="text-gray-200 text-base sm:text-lg">100% Customer Satisfaction</span>
                                 </div>
-                                <div className="flex items-center gap-4">
-                                    <div className="w-6 h-6 flex items-center justify-center">
-                                        <span className="text-amber-500 text-xl">✓</span>
+                                <div className="flex items-center gap-3 sm:gap-4">
+                                    <div className="w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center">
+                                        <span className="text-amber-500 text-lg sm:text-xl">✓</span>
                                     </div>
-                                    <span className="text-gray-200 text-lg">5-Year Warranty on Services</span>
+                                    <span className="text-gray-200 text-base sm:text-lg">5-Year Warranty on Services</span>
                                 </div>
                             </div>
 
                             {/* Right Side - Image */}
-                            <div className="relative w-[270px] h-[102px] sm:w-[270px] sm:h-[102px] md:w-[270px] md:h-[102px] lg:w-[270px] lg:h-[102px] mx-auto">
+                            <div className="relative w-[220px] h-[82px] sm:w-[270px] sm:h-[102px] mx-auto">
                                 <img 
                                     src="/img/faqs-s-bg.jpg" 
                                     alt="FAQ illustration" 
-                                    className="w-full h-full object-contain rounded-2xl"
+                                    className="w-full h-full object-contain rounded-xl sm:rounded-2xl"
                                     style={{
                                         verticalAlign: 'middle',
                                         boxSizing: 'border-box'
