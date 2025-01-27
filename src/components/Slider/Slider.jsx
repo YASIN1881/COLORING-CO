@@ -51,16 +51,17 @@ const Slider = () => {
                 effect="creative"
                 creativeEffect={{
                     prev: {
-                        translate: [0, 0, -400],
-                        scale: 0.75,
-                        opacity: 0
+                        translate: ['-20%', 0, -200],
+                        scale: 1,
+                        opacity: 0.5
                     },
                     next: {
-                        translate: [0, 0, -400],
-                        scale: 0.75,
-                        opacity: 0
+                        translate: ['100%', 0, 0],
+                        scale: 1,
+                        opacity: 0.5
                     }
                 }}
+                speed={1000}
                 autoplay={{ 
                     delay: 10000,
                     disableOnInteraction: false 
@@ -77,6 +78,10 @@ const Slider = () => {
                 slidesPerView={1}
                 className="h-screen custom-swiper"
                 onSlideChange={handleSlideChange}
+                watchSlidesProgress={true}
+                grabCursor={true}
+                preventInteractionOnTransition={true}
+                style={{ background: '#2E2A20' }}
             >
                 {slides.map((slide, index) => (
                     <SwiperSlide key={index}>

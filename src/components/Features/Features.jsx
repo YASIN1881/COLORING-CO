@@ -41,7 +41,7 @@ const Features = () => {
 
     return (
         <div className="bg-[#2E2A20] py-20 px-4 md:py-24 lg:py-32 md:px-6 lg:px-8">
-            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row justify-center items-center gap-12 lg:gap-16 max-w-[1400px] mx-auto">
+            <div className="flex flex-col sm:grid sm:grid-cols-2 lg:flex lg:flex-row justify-evenly items-center gap-12 lg:gap-16 max-w-[1400px] mx-auto">
                 {features.map((feature) => (
                     <div 
                         key={feature.id} 

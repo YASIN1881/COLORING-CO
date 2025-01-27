@@ -1,7 +1,7 @@
 // import './NavBar.css';
 import { useState } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import { HiMenu, HiX } from "react-icons/hi";
+import { HiMenu, HiX, HiArrowNarrowRight } from "react-icons/hi";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link, useLocation } from 'react-router-dom';
@@ -28,6 +28,25 @@ NavLink.propTypes = {
     className: PropTypes.string,
     isActive: PropTypes.bool
 };
+
+const AppointmentButton = () => (
+    <div className="hidden lg:flex items-center">
+        <div className="flex items-center bg-[#2E2A20] rounded-l-full pr-6">
+            <Link
+                to="/contact"
+                className="group flex items-center bg-amber-500 text-white px-6 py-3 rounded-full 
+                    hover:bg-white hover:text-amber-500 transition-all duration-300 
+                    transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
+                    whitespace-nowrap"
+            >
+                <span className="relative z-10 flex items-center">
+                    Book Appointment
+                    <HiArrowNarrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
+            </Link>
+        </div>
+    </div>
+);
 
 export default function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -169,22 +188,16 @@ export default function NavBar() {
 
                 </div>
 
-                <div className="flex items-center gap-6">
-                    <div className="relative flex items-center">
-                        <div className="appointment-wrapper w-full flex">
-                            <Link
-                                to="/contact"
-                                className="hidden md:block md:bg-black text-white px-4 py-2 rounded-full hover:bg-amber-500 transition-all duration-300 ease-in-out items-center gap-2 group z-10 relative"
-                            >
-                                <span className="hidden md:inline group-hover:no-underline transition-transform duration-300 ease-in-out transform group-hover:scale-110">Book Appointment</span>
-                            </Link>
-                            <button
-                                className="ml-2 p-2 lg:hidden z-10 relative"
-                                onClick={toggleMenu}
-                            >
-                                <HiMenu className="w-7 h-7 text-white" />
-                            </button>
-                        </div>
+                <div className="flex items-center">
+                    <div className="flex items-center gap-4">
+                        <AppointmentButton />
+                        {/* Show hamburger menu on mobile and tablet */}
+                        <button
+                            className="p-2 lg:hidden z-10"
+                            onClick={toggleMenu}
+                        >
+                            <HiMenu className="w-7 h-7 text-white" />
+                        </button>
                     </div>
                 </div>
                 

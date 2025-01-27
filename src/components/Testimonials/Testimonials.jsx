@@ -61,13 +61,13 @@ const Testimonials = () => {
                         <img 
                             src="/FIVEICON.png" 
                             alt="Coloring Co Logo" 
-                            className="w-6 h-6 sm:w-8 sm:h-8 object-contain animate-pulse"
+                            className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
                         />
                         <span className="text-amber-500 uppercase tracking-wider text-sm font-medium">
                             Our Testimonials
                         </span>
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4 transform hover:scale-105 transition-transform duration-300">
+                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
                         What They Talked About Colorco
                     </h2>
                     <p className="text-gray-400/90 text-sm sm:text-base md:text-lg max-w-3xl mx-auto">

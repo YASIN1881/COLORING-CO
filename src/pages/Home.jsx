@@ -53,7 +53,7 @@ const teamMembers = [
 const blogs = [
     {
       title: "Cupidatat Nonproident, Sunt In Culpa Qui Officia Deserunt",
-      image: "/img/blog-2-1.webp",
+      image: "/img/blog-1-1.jpg",
       date: {
         day: "20",
         month: "JUNE"
@@ -63,7 +63,7 @@ const blogs = [
     },
     {
         title: "Cupidatat Nonproident, Sunt In Culpa Qui Officia Deserunt",
-        image: "/img/blog-l-2-1.webp",
+        image: "/img/blog-1-2.jpg",
         date: {
           day: "12",
           month: "FEBRUARY"
