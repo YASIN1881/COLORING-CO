@@ -24,12 +24,17 @@ export default {
         spinSlow: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' }
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%) skewX(-45deg)' },
+          '100%': { transform: 'translateX(200%) skewX(-45deg)' }
         }
       },
       animation: {
         'slideDown': 'slideDown 0.3s ease-out forwards',
         'fadeIn': 'fadeIn 0.3s ease-out forwards',
-        'spin-slow': 'spinSlow 20s linear infinite'
+        'spin-slow': 'spinSlow 20s linear infinite',
+        shimmer: 'shimmer 2s infinite'
       }
     },
   },

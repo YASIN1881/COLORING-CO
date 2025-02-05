@@ -8,6 +8,7 @@ import TeamGallerySection from '../components/TeamGallerySection/TeamGallerySect
 import BlogSection from '../components/BlogSection/BlogSection';
 import HomeFaq from '../components/HomeFaq/HomeFaq';
 
+
 const topImages = [
     { src: '/img/instagram-1-1.webp', alt: 'instagram-1-1', href: 'javascript:void(0)' },
     { src: '/img/instagram-1-2.webp', alt: 'instagram-1-2', href: 'javascript:void(0)' },
