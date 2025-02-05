@@ -1,12 +1,11 @@
+import PageHeader from "../components/PageHeader/PageHeader";
+import FAQ from "../components/FAQ/FAQ";
 
-export default function FAQ() {
+export default function FAQPage() {
     return (
-        <div>
-            <main className="container mx-auto px-4 py-8">
-                <h1 className="text-2xl font-bold">FAQ</h1>
-                <p>Welcome to the FAQ page.</p>
-            </main>
-            {/* Add Footer component here */}
+        <div className="min-h-screen bg-[#F5F5F4]">
+            <PageHeader title="FAQ" currentPage="FAQ" />
+            <FAQ />
         </div>
     );
 } 

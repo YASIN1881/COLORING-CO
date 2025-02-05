@@ -8,7 +8,6 @@ export default function AboutUs() {
             <PageHeader title="About Us" currentPage="About" />
             <WallDesignHero />
             <WhyChooseUs />
-            {/* Add your about page content here */}
         </div>
     );
 } 
