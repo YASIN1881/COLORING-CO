@@ -93,8 +93,18 @@ const Services = () => {
     };
 
     return (
-        <section className="w-full bg-[#2E2A20] py-16 md:py-20">
-            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px]">
+        // <section className="w-full bg-[#2E2A20]/1 py-16 md:py-20 relative">
+        <section className="w-full bg-[#2e2a20] py-16 md:py-20 relative">
+            {/* Background Image */}
+            <div className="absolute inset-0 w-full h-full">
+                <img 
+                    src="/img/service-bg-3-1.png" 
+                    alt="background" 
+                    className="w-full h-full object-cover opacity-10"
+                />
+            </div>
+            
+            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px] relative z-10">
                 {/* Title Slider */}
                 <div 
                     className="w-full overflow-hidden mb-8 relative py-2"
@@ -181,33 +191,54 @@ const Services = () => {
                     {services.map((service) => (
                         <div 
                             key={service.id}
-                            className="group relative rounded-[2.5rem] rounded-br-none overflow-hidden h-[400px] transform transition-all duration-500
-                                hover:shadow-2xl hover:shadow-amber-500/20 bg-[#1E1E1E]"
+                            className="group relative overflow-hidden h-[400px] transform transition-all duration-500
+                                [border-radius:2.5rem] [border-bottom-right-radius:0]
+                                hover:shadow-xl hover:shadow-amber-500/20"
                         >
                             {/* Image Container with Zoom Effect */}
-                            <div className="absolute inset-0 overflow-hidden rounded-[2.5rem] rounded-br-none">
-                                <img 
-                                    src={service.image} 
-                                    alt={service.title}
-                                    className="w-full h-full object-cover transform transition-transform duration-700
-                                        group-hover:scale-110"
-                                />
-                                {/* Subtle gradient for text readability */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                            <div className="absolute inset-0 overflow-hidden">
+                                {/* Main rounded corners for image box */}
+                                <div className="absolute inset-0 [border-radius:2.5rem] [border-bottom-right-radius:0] overflow-hidden">
+                                    <img 
+                                        src={service.image} 
+                                        alt={service.title}
+                                        className="w-full h-full object-cover transform transition-transform duration-700
+                                            group-hover:scale-110"
+                                    />
+                                    {/* Subtle gradient for text readability */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                </div>
+                                {/* Curved cutout with outward borders */}
+                                <div className="absolute bottom-0 right-16 hidden md:block">
+                                    <div className="relative w-[120px] h-[80px] ">
+                                        {/* Main curved shape */}
+                                        <div className="absolute inset-0 bg-[#2E2A20] rounded-t-[25px]"></div>
+                                        {/* Outward curved borders */}
+                                        <div className="absolute -left-12 bottom-0 w-12 h-16 overflow-hidden ">
+                                            <div className="absolute right-0 bottom-0 w-[48px] h-[48px] bg-transparent
+                                                rounded-br-[25px] shadow-[12px_12px_0_0_#2E2A20]" />
+                                        </div>
+                                        <div className="absolute -right-12 bottom-0 w-12 h-16 overflow-hidden">
+                                            <div className="absolute left-0 bottom-0 w-[48px] h-[48px] bg-transparent
+                                                rounded-bl-[25px] shadow-[-12px_12px_0_0_#2E2A20]" />
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Service Number with Enhanced Design */}
                             <div className="absolute top-6 left-6 z-10">
                                 <span 
                                     className="bg-amber-500 text-white text-base font-medium px-4 py-1.5 rounded-full
-                                        shadow-lg hover:scale-105 transition-all duration-300"
+                                        shadow-lg hover:scale-105 transition-all duration-300
+                                        group-hover:bg-white group-hover:text-amber-500 group-hover:shadow-amber-500/50"
                                 >
                                     {service.id}
                                 </span>
                             </div>
 
                             {/* Content Container with Better Layout */}
-                            <div className="absolute inset-x-0 bottom-0 flex justify-between items-center">
+                            <div className="absolute inset-x-0 bottom-0 flex justify-between items-end pr-4 md:pr-16">
                                 {/* Title */}
                                 <h3 
                                     className="text-white text-2xl font-bold transform transition-all duration-300
@@ -216,39 +247,44 @@ const Services = () => {
                                     {service.title}
                                 </h3>
 
-                                {/* Corner with Inverted Border Radius */}
-                                <div className="relative">
-                                    <div className="absolute bottom-0 right-0">
-                                        {/* Main Corner Shape */}
-                                        <div className="relative w-[120px] h-[120px] bg-amber-500
-                                            transition-all duration-300 group-hover:bg-white">
-                                            {/* Left Curve */}
-                                            <div className="absolute -left-6 bottom-0 w-6 h-6 bg-[#1E1E1E]">
-                                                <div className="absolute bottom-0 right-0 w-full h-full rounded-br-3xl"></div>
-                                            </div>
-                                            {/* Top Curve */}
-                                            <div className="absolute top-0 right-0 w-6 h-6">
-                                                <div className="absolute bottom-0 right-0 w-full h-full bg-amber-500 rounded-br-3xl
-                                                    transition-colors duration-300 group-hover:bg-white"></div>
-                                            </div>
-
-                                            {/* Button */}
-                                            <Link 
-                                                to={service.link}
-                                                className="absolute bottom-4 right-4 z-20"
+                                {/* Button Container */}
+                                <div className="w-[120px] h-[80px] relative hidden md:block">
+                                    <div className="absolute inset-0 flex items-center justify-center">
+                                        <Link 
+                                            to={service.link}
+                                            className="z-20"
+                                        >
+                                            <div 
+                                                className="text-white/90 px-4 py-3.5 rounded-[15px]
+                                                    border border-white/20 hover:border-white/40
+                                                    hover:text-white transition-all duration-300
+                                                    transform hover:scale-105 backdrop-blur-[2px]
+                                                    whitespace-nowrap text-base"
                                             >
-                                                <div 
-                                                    className="bg-black text-white px-6 py-3 rounded-full
-                                                        hover:bg-white hover:text-black transition-all duration-300
-                                                        transform hover:scale-105 shadow-lg hover:shadow-amber-500/50"
-                                                >
-                                                    <span className="font-medium tracking-wide text-sm">
-                                                        Details
-                                                    </span>
-                                                </div>
-                                            </Link>
-                                        </div>
+                                                <span className="font-medium tracking-wide">
+                                                    Details
+                                                </span>
+                                            </div>
+                                        </Link>
                                     </div>
+                                </div>
+
+                                {/* Mobile Button */}
+                                <div className="md:hidden">
+                                    <Link 
+                                        to={service.link}
+                                        className="px-4 py-2 mr-4 mb-6"
+                                    >
+                                        <div 
+                                            className="text-white/90 px-4 py-2 rounded-full
+                                                border border-white/20
+                                                whitespace-nowrap"
+                                        >
+                                            <span className="font-medium tracking-wide text-sm">
+                                                Details
+                                            </span>
+                                        </div>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
