@@ -1,8 +1,8 @@
 // import './NavBar.css';
 import { useState } from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import { HiMenu, HiX, HiArrowNarrowRight } from "react-icons/hi";
-import { MdEmail, MdPhone } from "react-icons/md";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaHome, FaInfoCircle, FaTools, FaBlog, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
+import { HiMenu, HiX } from "react-icons/hi";
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link, useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -30,18 +30,22 @@ NavLink.propTypes = {
 };
 
 const AppointmentButton = () => (
-    <div className="hidden lg:flex items-center">
-        <div className="flex items-center bg-[#2E2A20] rounded-l-full pr-6">
+    <div className="hidden sm:flex items-center relative group">
+        <div className="relative w-[350px] h-[100px] overflow-visible">
+            <div className="absolute inset-0 bg-[#df9e42] rounded-l-[50px]" style={{ clipPath: 'path("M50,0 H500 V100 H50 A50,50 0 0,1 0,50 A50,50 0 0,1 50,0 Z")' }}>
+                <div className="absolute inset-0 bg-[url('/img/menu-bg.png')] bg-repeat opacity-30 mix-blend-multiply" />
+            </div>
+        </div>
+        <div className="absolute inset-y-0 left-0 flex items-center pl-4 sm:pl-6 md:pl-8 lg:pl-8">
             <Link
                 to="/contact"
-                className="group flex items-center bg-amber-500 text-white px-6 py-3 rounded-full 
-                    hover:bg-white hover:text-amber-500 transition-all duration-300 
-                    transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
+                className="group flex items-center bg-[#1B1D17] text-white px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full 
+                    hover:bg-opacity-80 transition-all duration-300 
+                    transform hover:scale-105 shadow-lg
                     whitespace-nowrap"
             >
                 <span className="relative z-10 flex items-center">
                     Book Appointment
-                    <HiArrowNarrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
             </Link>
         </div>
@@ -87,11 +91,12 @@ export default function NavBar() {
     };
 
     const menuItems = [
-        { text: "Home", href: "/" },
-        { text: "About Us", href: "/about-us" },
+        { text: "Home", href: "/", icon: <FaHome className="text-xl" /> },
+        { text: "About Us", href: "/about-us", icon: <FaInfoCircle className="text-xl" /> },
         { 
             text: "Services", 
             href: "#",
+            icon: <FaTools className="text-xl" />,
             isDropdown: true,
             subItems: [
                 { text: "Residential Painting", href: "/services/residential" },
@@ -100,13 +105,13 @@ export default function NavBar() {
                 { text: "Spray Painting", href: "/services/spray" }
             ]
         },
-        { text: "Blog", href: "/blog" },
-        { text: "FAQ", href: "/faq" },
-        { text: "Contact", href: "/contact" },
+        { text: "Blog", href: "/blog", icon: <FaBlog className="text-xl" /> },
+        { text: "FAQ", href: "/faq", icon: <FaQuestionCircle className="text-xl" /> },
+        { text: "Contact", href: "/contact", icon: <FaEnvelope className="text-xl" /> },
     ];
 
     return (
-        <nav className=" py-4 relative bg-[#2E2A20]">
+        <nav className="py-12 relative bg-[#2E2A20]">
             <div className="container mx-auto flex justify-between items-center px-4">
                 <div className="flex items-center gap-12">
                     {/* LOGO */}
@@ -131,7 +136,7 @@ export default function NavBar() {
                         </div>
                     </Link>
 
-                    <div className="hidden lg:flex items-center gap-8">
+                    <div className="hidden xl:flex items-center gap-8">
                         {menuItems.map((item, index) => (
                             <div
                                 key={index}
@@ -185,50 +190,84 @@ export default function NavBar() {
                             </div>
                         ))}
                     </div>
-
                 </div>
 
-                <div className="flex items-center">
-                    <div className="flex items-center gap-4">
-                        <AppointmentButton />
-                        {/* Show hamburger menu on mobile and tablet */}
-                        <button
-                            className="p-2 lg:hidden z-10"
-                            onClick={toggleMenu}
-                        >
-                            <HiMenu className="w-7 h-7 text-white" />
-                        </button>
-                    </div>
+                {/* AppointmentButton with hamburger menu for tablet and desktop */}
+                <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden sm:flex items-center">
+                    <AppointmentButton />
+                    <button
+                        className="p-2 xl:hidden absolute right-4 top-1/2 transform -translate-y-1/2"
+                        onClick={toggleMenu}
+                    >
+                        <HiMenu className="w-7 h-7 text-white" />
+                    </button>
                 </div>
-                
-            </div>
+
+                {/* Mobile-only hamburger menu */}
+                <div className="flex items-center sm:hidden">
+                    <button
+                        className="p-2 z-10"
+                        onClick={toggleMenu}
+                    >
+                        <HiMenu className="w-7 h-7 text-white" />
+                    </button>
+                </div>
+
             {isOpen && (
                 <>
-                    <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleMenu}></div>
-                    <div className="fixed left-0 top-0 w-64 h-full bg-zinc-800 z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto">
-                        <div className="flex justify-between items-center p-4 border-b border-zinc-700">
-                            {/* LOGO */}
-                            <HiX className="text-white w-6 h-6 cursor-pointer" onClick={toggleMenu} />
+                    <div className="fixed inset-0 bg-black/30 backdrop-blur-sm z-40 transition-all duration-300" onClick={toggleMenu}></div>
+                    <div 
+                        className="fixed left-0 top-0 w-72 h-full bg-zinc-800/95 backdrop-blur-md z-50 
+                        transform transition-all duration-500 ease-out shadow-2xl
+                        border-r border-white/10"
+                        style={{
+                            clipPath: 'circle(150% at 0 0)',
+                            animation: 'slideIn 0.5s ease-out forwards'
+                        }}
+                    >
+                        <div className="flex justify-between items-center p-6 border-b border-white/10">
+                            <Link to="/" className="relative group">
+                                <img 
+                                    src="/FIVEICON.png" 
+                                    alt="Coloring co" 
+                                    className="h-8 cursor-pointer transform transition-all duration-500
+                                    group-hover:scale-110 group-hover:brightness-110" 
+                                />
+                            </Link>
+                            <button
+                                onClick={toggleMenu}
+                                className="p-2 hover:bg-white/10 rounded-full transition-all duration-300"
+                            >
+                                <HiX className="text-white/80 w-6 h-6 hover:text-white transition-colors duration-300" />
+                            </button>
                         </div>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col py-4 overflow-y-auto max-h-[calc(100vh-5rem)]">
                             {menuItems.map((item, index) => (
-                                <div key={index} className="relative">
+                                <div 
+                                    key={index} 
+                                    className="relative animate-fadeIn"
+                                    style={{ animationDelay: `${index * 0.1}s` }}
+                                >
                                     {item.isDropdown ? (
                                         <>
                                             <div 
-                                                className={`text-white py-3 px-4 border-b border-zinc-700 
+                                                className={`text-white/90 py-4 px-6
                                                 flex justify-between items-center cursor-pointer
+                                                hover:bg-white/5 transition-all duration-300
                                                 ${isActiveParent(item.subItems) ? 'text-amber-500' : ''}`}
                                                 onClick={() => toggleMobileSubmenu(item.text)}
                                             >
-                                                {item.text}
+                                                <div className="flex items-center gap-3">
+                                                    {item.icon}
+                                                    {item.text}
+                                                </div>
                                                 <IoIosArrowForward 
                                                     className={`text-amber-500 transition-transform duration-300
                                                     ${expandedMobileItems.includes(item.text) ? 'rotate-90' : ''}`}
                                                 />
                                             </div>
                                             <div 
-                                                className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out
+                                                className={`flex flex-col bg-black/20 overflow-hidden transition-all duration-300 ease-in-out
                                                 ${expandedMobileItems.includes(item.text) 
                                                     ? 'max-h-[500px] opacity-100' 
                                                     : 'max-h-0 opacity-0'}`}
@@ -238,10 +277,12 @@ export default function NavBar() {
                                                         key={subIndex}
                                                         to={subItem.href}
                                                         isActive={isActiveLink(subItem.href)}
-                                                        className="py-2 px-8 flex items-center gap-2"
+                                                        className="py-3 px-8 text-white/80 hover:text-white 
+                                                        hover:bg-white/5 transition-all duration-300 flex items-center gap-2"
                                                     >
                                                         <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 
-                                                            ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}`}
+                                                            ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}
+                                                            transition-opacity duration-300`}
                                                         />
                                                         {subItem.text}
                                                     </NavLink>
@@ -252,22 +293,36 @@ export default function NavBar() {
                                         <NavLink 
                                             to={item.href}
                                             isActive={isActiveLink(item.href)}
-                                            className="py-3 px-4 border-b border-zinc-700 flex justify-between items-center"
+                                            className="py-4 px-6 text-white/90 hover:text-white
+                                            hover:bg-white/5 transition-all duration-300 flex justify-between items-center"
                                         >
-                                            {item.text}
+                                            <div className="flex items-center gap-3">
+                                                {item.icon}
+                                                {item.text}
+                                            </div>
                                         </NavLink>
                                     )}
                                 </div>
                             ))}
                         </div>
-                        <div className="mt-8 px-4">
-                            <ContactInfo icon={<MdEmail />} text="needhelp@colorco.com" />
-                            <ContactInfo icon={<MdPhone />} text="666 888 0000" />
-                            <div className="flex gap-4 mt-4">
-                                <SocialIcon icon={<FaFacebookF />} />
-                                <SocialIcon icon={<FaTwitter />} />
-                                <SocialIcon icon={<FaInstagram />} />
-                                <SocialIcon icon={<FaYoutube />} />
+                        <div className="mt-auto px-6 py-8 border-t border-white/10 bg-white/5">
+                            <ContactInfo 
+                                icon={<MdLocationOn className="text-amber-500" />} 
+                                text="Melbourne, Australia" 
+                            />
+                            <ContactInfo 
+                                icon={<MdEmail className="text-amber-500" />} 
+                                text="info@coloringco.com" 
+                            />
+                            <ContactInfo 
+                                icon={<MdPhone className="text-amber-500" />} 
+                                text="0413709050" 
+                            />
+                            <div className="flex gap-4 mt-6">
+                                <SocialIcon icon={<FaFacebookF className="text-lg" />} />
+                                <SocialIcon icon={<FaTwitter className="text-lg" />} />
+                                <SocialIcon icon={<FaInstagram className="text-lg" />} />
+                                <SocialIcon icon={<FaYoutube className="text-lg" />} />
                             </div>
                         </div>
                     </div>
@@ -284,11 +339,37 @@ export default function NavBar() {
                     }
                 }
 
+                @keyframes slideIn {
+                    from {
+                        clip-path: circle(0% at 0 0);
+                    }
+                    to {
+                        clip-path: circle(150% at 0 0);
+                    }
+                }
+
+                @keyframes fadeIn {
+                    from {
+                        opacity: 0;
+                        transform: translateX(20px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
                 .animate-subtle-bounce {
                     animation: subtle-bounce 2s ease-in-out infinite;
                 }
+
+                .animate-fadeIn {
+                    opacity: 0;
+                    animation: fadeIn 0.5s ease-out forwards;
+                }
                 `}
             </style>
+            </div>
         </nav>
     );
 }

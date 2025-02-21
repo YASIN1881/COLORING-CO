@@ -6,26 +6,26 @@ const Testimonials = () => {
     const testimonials = [
         {
             id: 1,
-            name: "ANTHONY B. CASTILLO",
-            position: "MANAGING DIRECTOR",
-            image: "/img/testi-3-1.webp",
-            quote: "Ienet Internet Company Also Impressed Us With Their Transparency Regarding Costs. The Initial Quote Was Accurate",
+            name: "JAMES ANDERSON",
+            position: "RESIDENTIAL CLIENT",
+            image: "/img/test-m-2.jpg",
+            quote: "Coloring Co completely transformed our home with their exceptional interior painting. Their color consultation was invaluable, and the attention to detail in every room was remarkable. The team's professionalism and cleanliness throughout the project impressed us greatly.",
             rating: 5
         },
         {
             id: 2,
-            name: "SARAH JOHNSON",
-            position: "CEO",
-            image: "/img/testi-3-2.webp",
-            quote: "Outstanding service and professional team. The wallpaper installation exceeded our expectations.",
+            name: "EMILY RICHARDSON",
+            position: "INTERIOR DESIGN STUDIO OWNER",
+            image: "/img/test-w-1.jpg",
+            quote: "As an interior design studio, we've partnered with Coloring Co on numerous projects. Their expertise in color matching and ability to execute complex painting techniques has made them our go-to painting contractor. They consistently deliver outstanding results.",
             rating: 5
         },
         {
             id: 3,
-            name: "MICHAEL CHEN",
-            position: "PROJECT MANAGER",
-            image: "/img/testi-3-3.webp",
-            quote: "Their attention to detail and customer service made the entire process smooth and enjoyable.",
+            name: "DAVID THOMPSON",
+            position: "COMMERCIAL PROPERTY OWNER",
+            image: "/img/test-m-3.jpg",
+            quote: "Coloring Co expertly handled our multi-story office building renovation. Their team worked efficiently during off-hours, used low-VOC paints, and delivered a flawless finish. The new color scheme has completely modernized our property's appearance.",
             rating: 5
         }
     ];
@@ -67,10 +67,10 @@ const Testimonials = () => {
                             Our Testimonials
                         </span>
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-                        What They Talked About Colorco
+                    <h2 className="text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300">
+                        What They Talked About Coloring Co
                     </h2>
-                    <p className="text-gray-400/90 text-sm sm:text-base md:text-lg max-w-3xl mx-auto">
+                    <p className="text-amber-100/80 text-sm sm:text-base md:text-lg max-w-3xl mx-auto hover:text-amber-50/90 transition-colors duration-300">
                         Discover what our satisfied clients have to say about their experience with our professional painting services and exceptional results.
                     </p>
                 </div>

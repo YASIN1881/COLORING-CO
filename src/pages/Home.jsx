@@ -3,52 +3,33 @@ import Features from '../components/Features/Features';
 import Hero from '../components/Hero/Hero';
 import Services from '../components/Services/Services';
 import Projects from '../components/Projects/Projects';
+// import SideBySide from '../components/SideBySide/SideBySide';
 import Testimonials from '../components/Testimonials/Testimonials';
 import TeamGallerySection from '../components/TeamGallerySection/TeamGallerySection';
 import BlogSection from '../components/BlogSection/BlogSection';
 import HomeFaq from '../components/HomeFaq/HomeFaq';
 
-
-const topImages = [
-    { src: '/img/instagram-1-1.webp', alt: 'instagram-1-1', href: 'javascript:void(0)' },
-    { src: '/img/instagram-1-2.webp', alt: 'instagram-1-2', href: 'javascript:void(0)' },
-    { src: '/img/instagram-1-3.webp', alt: 'instagram-1-3', href: 'javascript:void(0)' },
-    { src: '/img/instagram-1-4.webp', alt: 'instagram-1-4', href: 'javascript:void(0)' },
-    { src: '/img/instagram-1-5.webp', alt: 'instagram-1-5', href: 'javascript:void(0)' },
-    { src: '/img/instagram-1-6.webp', alt: 'instagram-1-6', href: 'javascript:void(0)' },
-];
-
 const teamMembers = [
     {
-        name: 'Leslie Alexander',
-        role: 'Web Developer',
-        image: '/img/testi-3-1.webp',
+        name: 'Peter Rasuli',
+        role: 'CEO & Founder',
+        image: '/img/peter_rasuli.jpg',
         social: {
-          facebook: 'javascript:void(0)',
-          instagram: 'javascript:void(0)',
-          linkedin: 'javascript:void(0)'
+          facebook: true,
+          instagram: true,
+          linkedin: true
         }
     },
     {
-        name: 'Leslie Alexander',
-        role: 'Web Developer',
-        image: '/img/testi-3-2.webp',
+        name: 'Elli Ansari',
+        role: 'Lead Designer',
+        image: '/img/elli_ansari.jpg',
         social: {
-          facebook: 'javascript:void(0)',
-          instagram: 'javascript:void(0)',
-          linkedin: 'javascript:void(0)'
+          facebook: true,
+          instagram: true,
+          linkedin: true
         }
-    },
-    {
-        name: 'Leslie Alexander',
-        role: 'Web Developer',
-        image: '/img/testi-3-3.webp',
-        social: {
-          facebook: 'javascript:void(0)',
-          instagram: 'javascript:void(0)',
-          linkedin: 'javascript:void(0)'
-        }
-    },
+    }
 ];
 
 const blogs = [
@@ -71,9 +52,8 @@ const blogs = [
         },
         author: "Admin",
         comments: "5 Comments"
-      },
-
-  ];
+      }
+];
 
 const Home = () => {
     return (
@@ -84,12 +64,9 @@ const Home = () => {
             <Services />
             <HomeFaq />
             <Projects />
+            {/* <SideBySide /> */}
             <Testimonials />
-            <TeamGallerySection 
-                topGalleryImages={topImages}
-                teamMembers={teamMembers}
-                themeColor="#F97316"
-            />
+            <TeamGallerySection teamMembers={teamMembers} />
             <BlogSection blogs={blogs} />
         </div>
     );
