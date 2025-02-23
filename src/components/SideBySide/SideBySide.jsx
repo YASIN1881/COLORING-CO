@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import './SideBySide.css';
+import { useState, useEffect, useRef } from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const SideBySide = () => {
     const [activeIndex, setActiveIndex] = useState(0);
@@ -63,6 +63,21 @@ const SideBySide = () => {
         handleSliderChange(projectId, Math.min(Math.max(position, 0), 100));
     };
 
+    const handleKeyDown = (e, projectId) => {
+        const currentPosition = sliderPositions[projectId];
+        const step = 5;
+
+        if (e.key === 'ArrowLeft') {
+            handleSliderChange(projectId, Math.max(currentPosition - step, 0));
+        } else if (e.key === 'ArrowRight') {
+            handleSliderChange(projectId, Math.min(currentPosition + step, 100));
+        }
+    };
+
+    const handleDragStart = (e) => {
+        e.preventDefault();
+    };
+
     return (
         <section className="w-full bg-[#2E2A20] py-16 md:py-20 relative overflow-hidden">
             {/* Background Pattern */}
@@ -105,12 +120,20 @@ const SideBySide = () => {
                             {project.type === 'comparison' ? (
                                 // Comparison View
                                 <div 
-                                    className="relative h-[400px] cursor-ew-resize"
+                                    className="relative h-[400px] cursor-ew-resize focus:outline-none focus:ring-2 focus:ring-amber-500/50 rounded-2xl transition-all duration-300 transform hover:shadow-2xl"
                                     onMouseMove={(e) => handleMouseMove(e, project.id)}
                                     onTouchMove={(e) => {
                                         const touch = e.touches[0];
                                         handleMouseMove(touch, project.id);
                                     }}
+                                    onKeyDown={(e) => handleKeyDown(e, project.id)}
+                                    onDragStart={handleDragStart}
+                                    tabIndex={0}
+                                    role="slider"
+                                    aria-label="Image comparison slider"
+                                    aria-valuemin={0}
+                                    aria-valuemax={100}
+                                    aria-valuenow={sliderPositions[project.id]}
                                 >
                                     {/* After Image (Full) */}
                                     <div className="absolute inset-0">
@@ -139,19 +162,28 @@ const SideBySide = () => {
 
                                     {/* Slider Control */}
                                     <div 
-                                        className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize"
+                                        className="absolute top-0 bottom-0 w-0.5 bg-white/80 cursor-ew-resize backdrop-blur-sm transition-all duration-300 group-hover:w-1"
                                         style={{ left: `${sliderPositions[project.id]}%` }}
                                     >
-                                        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-white rounded-full shadow-lg flex items-center justify-center">
-                                            <div className="w-6 h-6 rounded-full bg-amber-500 transform transition-transform group-hover:scale-110"></div>
+                                        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2 w-12 h-12 rounded-full shadow-lg flex items-center justify-center
+                                            transform transition-all duration-300 group-hover:scale-110 hover:shadow-amber-500/50 bg-gradient-to-br from-white to-gray-100">
+                                            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 transform transition-all duration-300
+                                                flex items-center justify-center shadow-inner group-hover:from-amber-500 group-hover:to-amber-700">
+                                                <div className="flex gap-1">
+                                                    <ChevronLeft className="w-3 h-3 text-white/80" />
+                                                    <ChevronRight className="w-3 h-3 text-white/80" />
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
 
                                     {/* Labels */}
-                                    <div className="absolute top-4 left-4 bg-black/50 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+                                    <div className="absolute top-4 left-4 bg-black/60 text-white px-4 py-2 rounded-full text-sm backdrop-blur-md
+                                        transform transition-all duration-300 group-hover:bg-black/80 group-hover:scale-105 shadow-lg">
                                         Before
                                     </div>
-                                    <div className="absolute top-4 right-4 bg-amber-500 text-white px-3 py-1 rounded-full text-sm">
+                                    <div className="absolute top-4 right-4 bg-gradient-to-r from-amber-500 to-amber-600 text-white px-4 py-2 rounded-full text-sm
+                                        transform transition-all duration-300 group-hover:scale-105 shadow-lg hover:shadow-amber-500/50">
                                         After
                                     </div>
                                 </div>

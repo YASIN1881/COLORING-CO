@@ -33,8 +33,8 @@ const HomeFaq = () => {
 
     return (
         <div className="w-full bg-[#2E2A20] py-12 sm:py-14 md:py-16 lg:py-20">
-            <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 max-w-[1400px]">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+            <div className="container mx-auto px-4 sm:px-6 md:px-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10">
                     {/* Left Side - FAQ Accordion */}
                     <div className="space-y-3 sm:space-y-4">
                         {questions.map((q) => (
@@ -109,7 +109,7 @@ const HomeFaq = () => {
                         </div>
 
                         {/* Features and Image Grid */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 items-center">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                             {/* Left Side - Features List */}
                             <div className="space-y-4 sm:space-y-6 py-3 sm:py-4">
                                 <div className="flex items-center gap-3 sm:gap-4">
@@ -139,15 +139,11 @@ const HomeFaq = () => {
                             </div>
 
                             {/* Right Side - Image */}
-                            <div className="relative w-[220px] h-[82px] sm:w-[270px] sm:h-[102px] mx-auto">
+                            <div className="relative max-w-[270px] h-[82px] sm:h-[102px] mx-auto">
                                 <img 
                                     src="/img/faqs-s-bg.jpg" 
                                     alt="FAQ illustration" 
                                     className="w-full h-full object-contain rounded-xl sm:rounded-2xl"
-                                    style={{
-                                        verticalAlign: 'middle',
-                                        boxSizing: 'border-box'
-                                    }}
                                 />
                             </div>
                         </div>

@@ -52,7 +52,7 @@ function TeamGallerySection({ teamMembers }) {
                 <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">
                   {/* Role Badge */}
                   <div className="inline-block mb-4 transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                    <span className="bg-amber-500 text-white/90 px-4 py-1.5 rounded-full text-sm font-medium shadow-lg group-hover:text-white">
+                    <span className="bg-amber-500 text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-lg">
                       {member.role}
                     </span>
                   </div>
