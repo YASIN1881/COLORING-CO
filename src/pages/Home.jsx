@@ -1,5 +1,5 @@
 import Slider from '../components/Slider/Slider';
-import Features from '../components/Features/Features';
+// import Features from '../components/Features/Features';
 import Hero from '../components/Hero/Hero';
 import Services from '../components/Services/Services';
 import Projects from '../components/Projects/Projects';
@@ -59,7 +59,7 @@ const Home = () => {
     return (
       <div>
             <Slider />
-            <Features />
+            {/* <Features /> */}
             <Hero />
             <Services />
             <HomeFaq />

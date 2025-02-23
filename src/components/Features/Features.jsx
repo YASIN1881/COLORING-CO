@@ -133,15 +133,18 @@ const Features = () => {
                                     </p>
 
                                     {/* Stats */}
-                                    <div className="grid grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                                         {feature.stats.map((stat, index) => (
                                             <div 
                                                 key={index}
-                                                className="text-center p-3 rounded-xl bg-black/20 backdrop-blur-lg
+                                                className="text-center px-3 py-4 rounded-xl bg-black/20 backdrop-blur-lg
                                                 transform transition-transform duration-300
-                                                group-hover:scale-105"
+                                                group-hover:scale-105 flex items-center justify-center
+                                                min-h-[70px] sm:min-h-[80px] overflow-hidden"
                                             >
-                                                <span className="text-amber-400 text-sm font-medium block">
+                                                <span className="text-amber-400 text-sm font-medium 
+                                                    break-words whitespace-normal overflow-wrap-anywhere
+                                                    leading-tight px-1 w-full">
                                                     {stat}
                                                 </span>
                                             </div>
