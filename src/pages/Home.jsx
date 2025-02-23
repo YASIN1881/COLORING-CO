@@ -3,7 +3,7 @@ import Features from '../components/Features/Features';
 import Hero from '../components/Hero/Hero';
 import Services from '../components/Services/Services';
 import Projects from '../components/Projects/Projects';
-// import SideBySide from '../components/SideBySide/SideBySide';
+import SideBySide from '../components/SideBySide/SideBySide';
 import Testimonials from '../components/Testimonials/Testimonials';
 import TeamGallerySection from '../components/TeamGallerySection/TeamGallerySection';
 import BlogSection from '../components/BlogSection/BlogSection';
@@ -64,7 +64,7 @@ const Home = () => {
             <Services />
             <HomeFaq />
             <Projects />
-            {/* <SideBySide /> */}
+            <SideBySide />
             <Testimonials />
             <TeamGallerySection teamMembers={teamMembers} />
             <BlogSection blogs={blogs} />
