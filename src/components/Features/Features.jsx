@@ -1,15 +1,16 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import WOW from 'wow.js';
-import { HiOutlineLightBulb, HiCurrencyDollar } from 'react-icons/hi';
-import { IoColorPaletteSharp } from 'react-icons/io5';
-import { RiTeamLine } from 'react-icons/ri';
+import { HiHome, HiTemplate, HiCube } from 'react-icons/hi';
+import { MdArchitecture, MdDesignServices, MdConstruction, MdOutlineHomeWork } from 'react-icons/md';
 
 const Features = () => {
+    const [hoveredId, setHoveredId] = useState(null);
+
     useEffect(() => {
         const wow = new WOW({
             boxClass: 'wow',
             animateClass: 'animated',
-            offset: 0,
+            offset: 100,
             mobile: true,
             live: true
         });
@@ -19,62 +20,155 @@ const Features = () => {
     const features = [
         { 
             id: 1, 
-            title: 'Smart Work',
-            icon: <HiOutlineLightBulb className="w-10 h-10" />
+            title: 'Architectural Design',
+            description: 'Creating innovative and sustainable architectural solutions tailored to your lifestyle',
+            icon: <MdArchitecture className="w-12 h-12" />,
+            color: 'amber',
+            stats: ['100+ Projects', '15+ Awards', '10+ Years']
         },
         { 
             id: 2, 
-            title: 'Unique Design',
-            icon: <IoColorPaletteSharp className="w-9 h-9" />
+            title: 'Interior Excellence',
+            description: 'Transform your space with modern interior design and premium materials',
+            icon: <MdDesignServices className="w-12 h-12" />,
+            color: 'amber',
+            stats: ['200+ Designs', 'Premium Materials', 'Custom Solutions']
         },
         { 
             id: 3, 
-            title: 'Skilled Team',
-            icon: <RiTeamLine className="w-9 h-9" />
+            title: 'Renovation Mastery',
+            description: 'Expert renovation services with guaranteed quality and timely execution',
+            icon: <MdConstruction className="w-12 h-12" />,
+            color: 'amber',
+            stats: ['500+ Renovations', 'Quality Guarantee', 'On-Time Delivery']
         },
         { 
             id: 4, 
-            title: 'Best Pricing',
-            icon: <HiCurrencyDollar className="w-9 h-9" />
+            title: 'Project Development',
+            description: 'Full-scale construction project management from concept to completion',
+            icon: <MdOutlineHomeWork className="w-12 h-12" />,
+            color: 'amber',
+            stats: ['50+ Developments', 'Expert Team', 'Turn-key Solutions']
         },
     ];
 
     return (
-        <div className="bg-[#2E2A20] w-full py-20 md:py-24 lg:py-32">
-            <div className="container mx-auto px-4 md:px-6 lg:px-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <section className="bg-[#1a1814] w-full py-24 md:py-32 relative overflow-hidden">
+            {/* Animated Background Pattern */}
+            <div className="absolute inset-0">
+                <div className="absolute inset-0 opacity-5" 
+                    style={{ 
+                        backgroundImage: 'linear-gradient(30deg, #2E2A20 12%, transparent 12.5%, transparent 87%, #2E2A20 87.5%, #2E2A20), linear-gradient(150deg, #2E2A20 12%, transparent 12.5%, transparent 87%, #2E2A20 87.5%, #2E2A20), linear-gradient(30deg, #2E2A20 12%, transparent 12.5%, transparent 87%, #2E2A20 87.5%, #2E2A20), linear-gradient(150deg, #2E2A20 12%, transparent 12.5%, transparent 87%, #2E2A20 87.5%, #2E2A20), linear-gradient(60deg, #2E2A2077 25%, transparent 25.5%, transparent 75%, #2E2A2077 75%, #2E2A2077), linear-gradient(60deg, #2E2A2077 25%, transparent 25.5%, transparent 75%, #2E2A2077 75%, #2E2A2077)',
+                        backgroundSize: '80px 140px',
+                        backgroundPosition: '0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px',
+                        animation: 'patternMove 30s linear infinite'
+                    }}>
+                </div>
+            </div>
+
+            <div className="container mx-auto px-4 relative">
+                {/* Section Header */}
+                <div className="text-center mb-20">
+                    <div className="wow fadeIn inline-block mb-8" data-wow-duration="1.5s">
+                        <div className="relative group cursor-pointer">
+                            <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-400 rounded-3xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+                            <div className="relative flex items-center justify-center p-8 space-x-4">
+                                <HiCube className="w-16 h-16 text-amber-500 transform -rotate-12" />
+                                <HiHome className="w-20 h-20 text-amber-400" />
+                                <HiTemplate className="w-16 h-16 text-amber-500 transform rotate-12" />
+                            </div>
+                        </div>
+                    </div>
+                    <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+                        Our Works
+                    </h2>
+                    <p className="text-gray-400 max-w-3xl mx-auto text-lg">
+                        Elevating spaces through innovative design and exceptional craftsmanship
+                    </p>
+                </div>
+
+                {/* Features Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 relative">
                     {features.map((feature) => (
                         <div 
-                            key={feature.id} 
-                            className="wow fadeInUp group flex flex-col items-center gap-8 hover:scale-105 transition-transform duration-300"
+                            key={feature.id}
+                            className="wow fadeInUp relative"
                             data-wow-delay={`${feature.id * 0.2}s`}
+                            onMouseEnter={() => setHoveredId(feature.id)}
+                            onMouseLeave={() => setHoveredId(null)}
                         >
-                            <div className="w-[220px] h-[220px] bg-[#1a1a1a] rounded-full flex items-center justify-center transition-all duration-300 ease-in-out group-hover:bg-gradient-to-r from-amber-400 to-amber-600 relative overflow-hidden shadow-lg">
-                                {/* Background Overlay */}
-                                <div 
-                                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-br from-amber-400/80 to-amber-600/80"
-                                    style={{ 
-                                        backgroundImage: 'url("/img/about-bg-2-1.png")',
-                                        backgroundBlendMode: 'soft-light'
-                                    }}>
-                                </div>
-                                <div className="w-[100px] h-[100px] bg-white rounded-full flex items-center justify-center relative z-10 shadow-md transform group-hover:rotate-12 transition-all duration-300">
-                                    <div className="text-amber-500 group-hover:text-amber-600 transition-colors duration-300">
-                                        {feature.icon}
+                            <div className={`
+                                relative p-8 rounded-3xl
+                                bg-gradient-to-br from-[#2a2620]/90 to-[#1d1b17]/90
+                                backdrop-blur-xl
+                                transition-all duration-500
+                                ${hoveredId === feature.id ? 'transform scale-[1.02]' : ''}
+                                group
+                            `}>
+                                {/* Glowing Effect */}
+                                <div className={`
+                                    absolute inset-0 rounded-3xl opacity-0 
+                                    bg-gradient-to-r from-amber-600/20 to-amber-400/20 
+                                    blur-xl -z-10 transition-opacity duration-500
+                                    ${hoveredId === feature.id ? 'opacity-100' : ''}
+                                `}></div>
+
+                                {/* Content */}
+                                <div className="relative z-10">
+                                    {/* Icon */}
+                                    <div className="mb-6">
+                                        <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-amber-400 to-amber-600 p-0.5 transform transition-transform duration-500 group-hover:rotate-6">
+                                            <div className="w-full h-full bg-[#1a1814] rounded-2xl flex items-center justify-center text-amber-400 group-hover:text-amber-300 transition-colors duration-300">
+                                                {feature.icon}
+                                            </div>
+                                        </div>
                                     </div>
+
+                                    {/* Text Content */}
+                                    <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-amber-400 transition-colors duration-300">
+                                        {feature.title}
+                                    </h3>
+                                    <p className="text-gray-400 text-lg mb-8 group-hover:text-gray-300 transition-colors duration-300 max-w-lg">
+                                        {feature.description}
+                                    </p>
+
+                                    {/* Stats */}
+                                    <div className="grid grid-cols-3 gap-4">
+                                        {feature.stats.map((stat, index) => (
+                                            <div 
+                                                key={index}
+                                                className="text-center p-3 rounded-xl bg-black/20 backdrop-blur-lg
+                                                transform transition-transform duration-300
+                                                group-hover:scale-105"
+                                            >
+                                                <span className="text-amber-400 text-sm font-medium block">
+                                                    {stat}
+                                                </span>
+                                            </div>
+                                        ))}
+                                    </div>
+
+                                    {/* Decorative Line */}
+                                    <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-amber-400/0 via-amber-400/50 to-amber-400/0 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500"></div>
                                 </div>
-                            </div>
-                            <div className="relative">
-                                <h3 className="text-white text-xl font-medium text-center group-hover:text-amber-400 transition-colors duration-300">
-                                    {feature.title}
-                                </h3>
-                                <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-amber-400 to-amber-600 transition-all duration-300 delay-150 group-hover:w-full"></span>
                             </div>
                         </div>
                     ))}
                 </div>
+
+                {/* Decorative Elements */}
+                <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl"></div>
+                <div className="absolute -top-40 -left-40 w-80 h-80 bg-amber-500/5 rounded-full blur-3xl"></div>
             </div>
-        </div>
+
+            {/* Add required CSS */}
+            <style>{`
+                @keyframes patternMove {
+                    0% { background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px; }
+                    100% { background-position: 1000px 0, 1000px 0, 1040px 70px, 1040px 70px, 1000px 0, 1040px 70px; }
+                }
+            `}</style>
+        </section>
     );
 };
 
