@@ -44,6 +44,28 @@ const Slider = () => {
         setActiveIndex(swiper.realIndex);
     };
 
+    const handleQuoteRequest = (e) => {
+        e.preventDefault();
+        
+        const emailContent = `
+Dear Coloring Co Team,
+
+I would like to request a quote for the following services:
+- Residential & Commercial Painting
+- House Renovation
+- Spray Painting
+- Interior Decoration
+
+Please provide me with detailed pricing information for your services.
+
+Best regards,
+Prospective Client
+        `.trim();
+
+        const mailtoLink = `mailto:info@coloringco.com?subject=Quote Request&body=${encodeURIComponent(emailContent)}`;
+        window.location.href = mailtoLink;
+    };
+
     return (
         <div className="slider-container">
             <Swiper
@@ -134,11 +156,13 @@ const Slider = () => {
                                         <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
                                             transition-transform duration-300 origin-left"></div>
                                     </button>
-                                    <button className="group border-2 border-white text-white px-10 py-4 rounded-full 
-                                        hover:bg-white hover:text-black transition-all duration-300 
-                                        transform hover:scale-105 backdrop-blur-sm
-                                        relative overflow-hidden">
-                                        <span className="relative z-10">{slide.buttonText2}</span>
+                                    <button 
+                                        onClick={handleQuoteRequest}
+                                        className="group border-2 border-white/70 bg-transparent text-white px-10 py-4 rounded-full 
+                                            hover:bg-white hover:text-amber-500 transition-all duration-300 
+                                            backdrop-blur-sm
+                                            relative overflow-hidden">
+                                        <span className="relative z-10 text-[15px] font-medium">{slide.buttonText2}</span>
                                         <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
                                             transition-transform duration-300 origin-left"></div>
                                     </button>

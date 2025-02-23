@@ -25,21 +25,9 @@ export default function TopBar() {
                     </a>
                 </div>
                 <div className="flex gap-2 lg:gap-4">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" 
-                        className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
-                        <SlSocialFacebook className="w-4 h-4"/>
-                    </a>
-                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                        className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
-                        <TfiTwitter className="w-4 h-4"/>
-                    </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer"
+                    <a href="https://www.instagram.com/_coloringco/" target="_blank" rel="noopener noreferrer"
                         className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
                         <SlSocialInstagram className="w-4 h-4"/>
-                    </a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer"
-                        className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
-                        <AiOutlineYoutube className="w-4 h-4"/>
                     </a>
                 </div>
             </div>

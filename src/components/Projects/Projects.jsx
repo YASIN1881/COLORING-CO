@@ -6,31 +6,31 @@ const Projects = () => {
     const slides = [
         {
             id: 1,
-            image: '/img/process-1-1.webp',
-            category: 'INTERIOR',
-            title: 'Ceiling Wallpaper',
-            description: 'Duis nunc risus, suscipit efficitur enim non, egestas interdum'
+            image: '/img/comp-project/residential-painting.jpg',
+            category: 'RESIDENTIAL',
+            title: 'Residential Painting',
+            description: 'Transform your home with our premium residential painting services. We deliver flawless finishes and lasting results for every room in your house.'
         },
         {
             id: 2,
-            image: '/img/process-1-2.jpg',
-            category: 'EXTERIOR',
-            title: 'Modern Wall Design',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'
+            image: '/img/comp-project/commercial-painting.jpeg',
+            category: 'COMMERCIAL',
+            title: 'Commercial Painting',
+            description: 'Professional painting solutions for offices, retail spaces, and industrial facilities. We work efficiently to minimize business disruption.'
         },
         {
             id: 3,
-            image: '/img/process-1-3.jpeg',
-            category: 'INTERIOR',
-            title: 'Classic Patterns',
-            description: 'Sed do eiusmod tempor incididunt ut labore et dolore'
+            image: '/img/comp-project/house-renovation.jpeg',
+            category: 'RENOVATION',
+            title: 'House Renovation',
+            description: 'Complete house renovation services including painting, repairs, and updates to transform your living space into something extraordinary.'
         },
         {
             id: 4,
-            image: '/img/process-1-4.jpeg',
-            category: 'DESIGN',
-            title: 'Creative Solutions',
-            description: 'Ut enim ad minim veniam, quis nostrud exercitation'
+            image: '/img/comp-project/spray-painting.jpg',
+            category: 'SPECIALTY',
+            title: 'Spray Painting & Decoration',
+            description: 'Expert spray painting and decorative finishes for a smooth, professional look. Perfect for both interior and exterior applications.'
         },
     ];
 
@@ -53,16 +53,16 @@ const Projects = () => {
                             className="w-6 h-6 sm:w-8 sm:h-8 object-contain"
                         />
                         <span className="text-amber-500 uppercase tracking-wider text-xs sm:text-sm font-medium">
-                            Our Complete Projects
+                            Our Signature Services
                         </span>
                     </div>
 
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 sm:mb-4">
-                        Recent Complete Projects
+                        Crafting Beautiful Spaces
                     </h2>
 
                     <p className="text-gray-400/90 text-sm sm:text-base">
-                        Transform your space with our professional painting projects. We showcase our expertise, quality workmanship, and attention to detail in every project, demonstrating outstanding results that exceed expectations.
+                        Discover our portfolio of exceptional painting and renovation services. Each project showcases our unwavering commitment to excellence, artistic precision, and masterful craftsmanship that elevates ordinary spaces into extraordinary environments.
                     </p>
                 </div>
 

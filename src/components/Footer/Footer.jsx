@@ -1,13 +1,82 @@
 import { IoLocationSharp } from "react-icons/io5";
 import { BiSolidPhoneCall } from "react-icons/bi";
 import { MdEmail } from "react-icons/md";
-import { SlSocialFacebook, SlSocialInstagram } from "react-icons/sl";
-import { TfiTwitter } from "react-icons/tfi";
-import { AiOutlineYoutube } from "react-icons/ai";
+import { SlSocialInstagram } from "react-icons/sl";
 import { HiArrowNarrowRight } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useEffect, useState } from 'react';
 
 function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ show: false, isSuccess: false });
+
+  const handleTeamClick = (e) => {
+    e.preventDefault();
+    
+    // If we're not on the home page, first navigate to home
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollToTeam: true } });
+    } else {
+      // If we're already on home page, just scroll
+      const teamSection = document.getElementById('team-section');
+      if (teamSection) {
+        teamSection.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
+  const handleQuoteRequest = async (e) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    
+    const emailContent = `
+Dear Coloring Co Team,
+
+A new quote request has been received from: ${email}
+
+Please contact them regarding:
+- Residential & Commercial Painting
+- House Renovation
+- Spray Painting
+- Interior Decoration
+
+Best regards,
+Coloring Co Quote System
+    `.trim();
+
+    try {
+      const mailtoLink = `mailto:info@coloringco.com?subject=New Quote Request&body=${encodeURIComponent(emailContent)}`;
+      window.location.href = mailtoLink;
+      
+      setSubmitStatus({ show: true, isSuccess: true });
+      setEmail('');
+    } catch {
+      setSubmitStatus({ show: true, isSuccess: false });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setSubmitStatus({ show: false, isSuccess: false }), 3000);
+    }
+  };
+
+  useEffect(() => {
+    // Check if we just navigated to home with the scrollToTeam state
+    if (location.pathname === '/' && location.state?.scrollToTeam) {
+      const teamSection = document.getElementById('team-section');
+      if (teamSection) {
+        setTimeout(() => {
+          teamSection.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+      // Clear the state
+      window.history.replaceState({}, document.title);
+    }
+  }, [location]);
+
   return (
     <footer className="bg-zinc-900 pt-16 pb-6">
       <div className="container mx-auto px-4">
@@ -40,44 +109,53 @@ function Footer() {
             </p>
           </Link>
           
-          {/* Newsletter */}
-          <div className="w-full lg:w-[600px]">
-            <div className="flex items-center bg-white rounded-full">
+          {/* Get Quote Form */}
+          <div className="w-full lg:w-[600px] relative">
+            <form onSubmit={handleQuoteRequest} className="flex items-center bg-white rounded-full relative">
               <div className="flex items-center flex-1 pl-4">
                 <MdEmail className="text-gray-400" size={20} />
                 <input
                   type="email"
-                  placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email for a quote"
                   className="w-full pl-4 py-4 bg-transparent text-gray-800 focus:outline-none"
+                  required
                 />
               </div>
-              <button className="group bg-amber-500 text-white px-6 py-4 rounded-full 
-                hover:bg-white hover:text-amber-500 transition-all duration-300 
-                transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
-                overflow-hidden whitespace-nowrap m-1">
+              <button 
+                type="submit"
+                disabled={isSubmitting}
+                className="group bg-amber-500 text-white px-6 py-4 rounded-full 
+                  hover:bg-white hover:text-amber-500 transition-all duration-300 
+                  transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
+                  overflow-hidden whitespace-nowrap m-1 disabled:opacity-50"
+              >
                 <span className="relative z-10 flex items-center">
-                  Subscribe Now
+                  {isSubmitting ? 'Sending...' : 'Get Quote'}
                   <HiArrowNarrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
                 <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
                   transition-transform duration-300 origin-left"></div>
               </button>
-            </div>
+            </form>
+
+            {/* Status Message */}
+            {submitStatus.show && (
+              <div className={`absolute -bottom-12 left-0 right-0 text-center py-2 px-4 rounded-lg transition-all duration-300 ${
+                submitStatus.isSuccess ? 'text-green-500' : 'text-red-500'
+              }`}>
+                {submitStatus.isSuccess 
+                  ? 'Quote request sent! We\'ll contact you soon.' 
+                  : 'Something went wrong. Please try again.'}
+              </div>
+            )}
           </div>
 
           {/* Social Links */}
           <div className="flex gap-4 mt-8 lg:mt-0">
-            <a href="#" className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
-              <SlSocialFacebook size={16} />
-            </a>
-            <a href="#" className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
-              <TfiTwitter size={16} />
-            </a>
-            <a href="#" className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
+            <a href="https://www.instagram.com/_coloringco/" className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
               <SlSocialInstagram size={16} />
-            </a>
-            <a href="#" className="social-icon w-8 h-8 border border-gray-600 rounded-full flex items-center justify-center hover:bg-gradient-to-r from-amber-500 to-amber-600 hover:border-transparent hover:text-white transition-all duration-500 ease-out hover:shadow-lg hover:shadow-amber-500/30 transform hover:-translate-y-1">
-              <AiOutlineYoutube size={16} />
             </a>
           </div>
         </div>
@@ -91,7 +169,7 @@ function Footer() {
               <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-amber-500 to-amber-600"></span>
             </h3>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Morem Ipsum Dolor Sit Amet, Consectetur Adipiscing Elita Florai Psum Dolor Sit Amet, Consecteture.Borem Ipsum Dolor
+              Specializing in residential & commercial painting, professional house renovation, expert spray painting, and modern interior decoration. Delivering premium quality and exceptional craftsmanship for every project.
             </p>
             <button
               className="group bg-amber-500 text-white px-6 py-3 rounded-full 
@@ -119,12 +197,15 @@ function Footer() {
                 { text: 'Home', path: '/' },
                 { text: 'About Us', path: '/about-us' },
                 { text: 'Contact Us', path: '/contact' },
-                { text: 'Our Team', path: '/team' },
-                { text: 'Projects', path: '/projects' },
+                { text: 'Our Team', path: '#team-section', onClick: handleTeamClick },
                 { text: 'Blog', path: '/blog' }
               ].map((item) => (
                 <li key={item.text} className="text-gray-400">
-                  <Link to={item.path} className="relative hover:text-amber-500 transition-colors duration-500 flex items-center group">
+                  <Link 
+                    to={item.path} 
+                    onClick={item.onClick}
+                    className="relative hover:text-amber-500 transition-colors duration-500 flex items-center group"
+                  >
                     <span className="mr-2 text-amber-500">•</span>
                     <span className="relative">
                       {item.text}

@@ -1,6 +1,28 @@
 import { FaPhone } from 'react-icons/fa6';
 
 const Hero = () => {
+    const handleConsultationRequest = (e) => {
+        e.preventDefault();
+        
+        const emailContent = `
+Dear Coloring Co Team,
+
+I would like to request a free consultation for:
+- Residential & Commercial Painting
+- House Renovation
+- Spray Painting
+- Interior Decoration
+
+Please contact me to schedule a consultation.
+
+Best regards,
+Prospective Client
+        `.trim();
+
+        const mailtoLink = `mailto:info@coloringco.com?subject=Free Consultation Request&body=${encodeURIComponent(emailContent)}`;
+        window.location.href = mailtoLink;
+    };
+
     return (
         <div className="relative overflow-hidden min-h-screen">
             {/* Background Image Layer */}
@@ -175,7 +197,9 @@ const Hero = () => {
                         {/* Call to Action Buttons */}
                         <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-4">
                             {/* Free Consultation Button */}
-                            <button className="group bg-amber-500 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full 
+                            <button 
+                                onClick={handleConsultationRequest}
+                                className="group bg-amber-500 text-white px-6 sm:px-10 py-3 sm:py-4 rounded-full 
                                 hover:bg-white hover:text-amber-500 transition-all duration-300 
                                 transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
                                 relative overflow-hidden text-sm sm:text-base">
@@ -186,20 +210,22 @@ const Hero = () => {
 
                             {/* Call Us Now Section */}
                             <div className="flex items-center gap-3 sm:gap-4">
-                                <button className="group border-2 border-white text-white w-[45px] h-[45px] sm:w-[52px] sm:h-[52px] rounded-full 
+                                <a href="tel:0413709050" className="group border-2 border-white text-white w-[45px] h-[45px] sm:w-[52px] sm:h-[52px] rounded-full 
                                     hover:bg-white hover:text-black transition-all duration-300 
                                     transform hover:scale-105 backdrop-blur-sm
-                                    relative overflow-hidden">
+                                    relative overflow-hidden flex items-center justify-center">
                                     <span className="relative z-10 flex items-center justify-center h-full">
                                         <FaPhone className="text-base sm:text-lg" />
                                     </span>
                                     <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
                                         transition-transform duration-300 origin-left"></div>
-                                </button>
+                                </a>
                                 
                                 <div className="flex flex-col">
                                     <span className="text-xs sm:text-sm text-gray-400">Call Us Now</span>
-                                    <span className="text-sm sm:text-base text-white font-medium">0413 709 050</span>
+                                    <a href="tel:0413709050" className="text-sm sm:text-base text-white font-medium hover:text-amber-500 transition-colors duration-300">
+                                        0413 709 050
+                                    </a>
                                 </div>
                             </div>
                         </div>

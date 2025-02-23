@@ -1,6 +1,6 @@
 import './NavBar.css';
 import { useState, useEffect } from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaHome, FaInfoCircle, FaTools, FaBlog, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaHome, FaInfoCircle, FaTools, FaBlog, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
@@ -335,11 +335,8 @@ export default function NavBar() {
                     >
                         <ContactInfo icon={<MdEmail />} text="info@coloringco.com" />
                         <ContactInfo icon={<MdPhone />} text="0413709050" />
-                        <div className="flex gap-4 mt-4">
-                            <SocialIcon icon={<FaFacebookF />} />
-                            <SocialIcon icon={<FaTwitter />} />
-                            <SocialIcon icon={<FaInstagram />} />
-                            <SocialIcon icon={<FaYoutube />} />
+                        <div className="flex gap-4">
+                            <SocialIcon href="https://www.instagram.com/_coloringco/" icon={<FaInstagram />}/>
                         </div>
                     </div>
                 </div>
@@ -391,17 +388,19 @@ ContactInfo.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-const SocialIcon = ({ icon }) => (
+const SocialIcon = ({ icon, href }) => (
     <a 
-        href="#" 
-        className="text-white hover:text-amber-500"
+        href={href}
+        className="text-white hover:text-amber-500 flex items-center gap-2"
         target="_blank"
         rel="noopener noreferrer"
     >
         {icon}
+        <span className="text-sm">Coloring Co</span>
     </a>
 );
 
 SocialIcon.propTypes = {
-    icon: PropTypes.element.isRequired
+    icon: PropTypes.element.isRequired,
+    href: PropTypes.string.isRequired
 };
