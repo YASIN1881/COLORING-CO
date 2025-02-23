@@ -333,8 +333,8 @@ export default function NavBar() {
                             opacity: isOpen ? 1 : 0
                         }}
                     >
-                        <ContactInfo icon={<MdEmail />} text="needhelp@colorco.com" />
-                        <ContactInfo icon={<MdPhone />} text="666 888 0000" />
+                        <ContactInfo icon={<MdEmail />} text="info@coloringco.com" />
+                        <ContactInfo icon={<MdPhone />} text="0413709050" />
                         <div className="flex gap-4 mt-4">
                             <SocialIcon icon={<FaFacebookF />} />
                             <SocialIcon icon={<FaTwitter />} />
