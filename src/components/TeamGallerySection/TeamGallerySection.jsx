@@ -4,11 +4,17 @@ import './TeamGallerySection.css'
 
 function TeamGallerySection({ teamMembers }) {
   return (
-    <div className="w-full bg-gradient-to-b from-[#2E2A20] to-[#1a1814] py-16 sm:py-20 md:py-24 lg:py-32 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 bg-[url('/img/service-bg-3-1.png')] bg-repeat"></div>
+    <div className="w-full bg-[#2e2a20] py-16 md:py-20 relative">
+      {/* Background Image */}
+      <div className="absolute inset-0 w-full h-full">
+        <img 
+          src="/img/service-bg-3-1.png" 
+          alt="background" 
+          className="w-full h-full object-cover opacity-10"
+        />
+      </div>
       
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-16 max-w-[1400px] relative">
+      <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px] relative z-10">
         {/* Section Header */}
         <div className="text-center mb-16 sm:mb-20">
           <div className="inline-block perspective-text">

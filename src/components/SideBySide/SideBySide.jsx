@@ -65,16 +65,19 @@ const SideBySide = () => {
     };
 
     return (
-        <section className="w-full bg-[#2E2A20] py-12 sm:py-14 md:py-16 lg:py-20 overflow-hidden">
-            {/* Decorative Background */}
-            <div className="absolute inset-0 opacity-10">
-                <div className="absolute inset-0 bg-[url('/img/service-bg-3-1.png')] bg-repeat opacity-20"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/5 to-transparent"></div>
+        <section className="w-full bg-[#2e2a20] py-16 md:py-20 relative">
+            {/* Background Image */}
+            <div className="absolute inset-0 w-full h-full">
+                <img 
+                    src="/img/service-bg-3-1.png" 
+                    alt="background" 
+                    className="w-full h-full object-cover opacity-10"
+                />
             </div>
-
-            <div className="container mx-auto px-4 sm:px-6 md:px-8 relative z-10">
+            
+            <div className="container mx-auto px-4 md:px-8 lg:px-16 max-w-[1400px] relative z-10">
                 {/* Section Header */}
-                <div className="max-w-3xl mb-10 sm:mb-12 md:mb-14 lg:mb-16">
+                <div className="relative max-w-3xl mb-10 sm:mb-12 md:mb-14 lg:mb-16">
                     <div className="flex items-center gap-2 mb-3 sm:mb-4">
                         <img 
                             src="/FIVEICON.png" 
@@ -86,7 +89,7 @@ const SideBySide = () => {
                         </span>
                     </div>
 
-                    <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 sm:mb-4 relative">
+                    <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3 sm:mb-4">
                         Transformation Showcase
                     </h2>
 

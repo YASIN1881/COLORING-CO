@@ -1,6 +1,6 @@
 import './NavBar.css';
 import { useState, useEffect } from "react";
-import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaHome, FaInfoCircle, FaTools, FaBlog, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
@@ -102,11 +102,12 @@ export default function NavBar() {
     };
 
     const menuItems = [
-        { text: "Home", href: "/" },
-        { text: "About Us", href: "/about-us" },
+        { text: "Home", href: "/", icon: <FaHome className="w-5 h-5" /> },
+        { text: "About Us", href: "/about-us", icon: <FaInfoCircle className="w-5 h-5" /> },
         { 
             text: "Services", 
             href: "#",
+            icon: <FaTools className="w-5 h-5" />,
             isDropdown: true,
             subItems: [
                 { text: "Residential Painting", href: "/services/residential" },
@@ -115,9 +116,9 @@ export default function NavBar() {
                 { text: "Spray Painting", href: "/services/spray" }
             ]
         },
-        { text: "Blog", href: "/blog" },
-        { text: "FAQ", href: "/faq" },
-        { text: "Contact", href: "/contact" },
+        { text: "Blog", href: "/blog", icon: <FaBlog className="w-5 h-5" /> },
+        { text: "FAQ", href: "/faq", icon: <FaQuestionCircle className="w-5 h-5" /> },
+        { text: "Contact", href: "/contact", icon: <FaEnvelope className="w-5 h-5" /> },
     ];
 
     return (
@@ -163,11 +164,17 @@ export default function NavBar() {
                                         group-hover:before:w-full lg:group-hover:before:w-full
                                         ${isActiveParent(item.subItems) ? 'before:w-full' : 'before:w-0'}`}
                                     >
-                                        {item.text}
+                                        <div className="flex items-center gap-3">
+                                            {item.icon}
+                                            <span>{item.text}</span>
+                                        </div>
                                     </div>
                                 ) : (
                                     <NavLink to={item.href} isActive={isActiveLink(item.href)}>
-                                        {item.text}
+                                        <div className="flex items-center gap-3">
+                                            {item.icon}
+                                            <span>{item.text}</span>
+                                        </div>
                                     </NavLink>
                                 )}
                                 {item.subItems && hoveredItem === item.text && (
@@ -191,7 +198,12 @@ export default function NavBar() {
                                                     className="block px-4 py-2 text-sm hover:bg-[#F4EDE4] hover:text-[#2E2A20]
                                                     transition-all duration-300 rounded-sm flex-1"
                                                 >
-                                                    {subItem.text}
+                                                    <div className="flex items-center gap-3">
+                                                        <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 
+                                                            ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}`}
+                                                        />
+                                                        <span>{subItem.text}</span>
+                                                    </div>
                                                 </NavLink>
                                             </div>
                                         ))}
@@ -238,33 +250,48 @@ export default function NavBar() {
 
                 {/* Mobile menu */}
                 <div 
-                    className={`fixed left-0 top-0 w-64 h-full bg-zinc-800 z-50 transform transition-transform duration-300 ease-in-out ${
-                        isOpen ? 'translate-x-0' : '-translate-x-full'
-                    }`}
+                    className={`fixed left-0 top-0 w-64 h-full bg-zinc-800 z-50 transform transition-all duration-500 ease-in-out
+                    ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-0'}`}
                 >
                     <div className="flex justify-between items-center p-4 border-b border-zinc-700">
-                        {/* LOGO */}
-                        <HiX className="text-white w-6 h-6 cursor-pointer" onClick={toggleMenu} />
+                        <Link to="/" className="relative">
+                            <img 
+                                src="/FIVEICON.png" 
+                                alt="Coloring co" 
+                                className="h-8 cursor-pointer" 
+                            />
+                        </Link>
+                        <HiX className="text-white w-6 h-6 cursor-pointer transform hover:rotate-90 transition-transform duration-300" onClick={toggleMenu} />
                     </div>
                     <div className="flex flex-col">
                         {menuItems.map((item, index) => (
-                            <div key={index} className="relative">
+                            <div 
+                                key={index} 
+                                className="relative transform transition-transform duration-500 ease-out"
+                                style={{
+                                    transitionDelay: `${index * 100}ms`,
+                                    transform: isOpen ? 'translateX(0)' : 'translateX(-100%)'
+                                }}
+                            >
                                 {item.isDropdown ? (
                                     <>
                                         <div 
                                             className={`text-white py-3 px-4 border-b border-zinc-700 
-                                            flex justify-between items-center cursor-pointer
+                                            flex justify-between items-center cursor-pointer hover:bg-zinc-700/50 transition-colors duration-300
                                             ${isActiveParent(item.subItems) ? 'text-amber-500' : ''}`}
                                             onClick={() => toggleMobileSubmenu(item.text)}
                                         >
-                                            {item.text}
+                                            <div className="flex items-center gap-3">
+                                                {item.icon}
+                                                <span>{item.text}</span>
+                                            </div>
                                             <IoIosArrowForward 
                                                 className={`text-amber-500 transition-transform duration-300
                                                 ${expandedMobileItems.includes(item.text) ? 'rotate-90' : ''}`}
                                             />
                                         </div>
                                         <div 
-                                            className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out
+                                            className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out bg-zinc-900
                                             ${expandedMobileItems.includes(item.text) 
                                                 ? 'max-h-[500px] opacity-100' 
                                                 : 'max-h-0 opacity-0'}`}
@@ -274,9 +301,9 @@ export default function NavBar() {
                                                     key={subIndex}
                                                     to={subItem.href}
                                                     isActive={isActiveLink(subItem.href)}
-                                                    className="py-2 px-8 flex items-center gap-2"
+                                                    className="py-2 px-8 flex items-center gap-2 hover:bg-zinc-800 transition-colors duration-300"
                                                 >
-                                                    <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 
+                                                    <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 transition-opacity duration-300 
                                                         ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}`}
                                                     />
                                                     {subItem.text}
@@ -288,15 +315,24 @@ export default function NavBar() {
                                     <NavLink 
                                         to={item.href}
                                         isActive={isActiveLink(item.href)}
-                                        className="py-3 px-4 border-b border-zinc-700 flex justify-between items-center"
+                                        className="py-3 px-4 border-b border-zinc-700 flex items-center gap-3 hover:bg-zinc-700/50 transition-colors duration-300"
                                     >
-                                        {item.text}
+                                        <div className="flex items-center gap-3">
+                                            {item.icon}
+                                            <span>{item.text}</span>
+                                        </div>
                                     </NavLink>
                                 )}
                             </div>
                         ))}
                     </div>
-                    <div className="mt-8 px-4">
+                    <div className="mt-8 px-4 transform transition-all duration-500 ease-out"
+                        style={{
+                            transitionDelay: `${menuItems.length * 100}ms`,
+                            transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+                            opacity: isOpen ? 1 : 0
+                        }}
+                    >
                         <ContactInfo icon={<MdEmail />} text="needhelp@colorco.com" />
                         <ContactInfo icon={<MdPhone />} text="666 888 0000" />
                         <div className="flex gap-4 mt-4">
