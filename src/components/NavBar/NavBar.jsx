@@ -116,7 +116,7 @@ export default function NavBar() {
                 { text: "Spray Painting", href: "/services/spray" }
             ]
         },
-        { text: "Blog", href: "/blog", icon: <FaBlog className="w-5 h-5" /> },
+        // { text: "Blog", href: "/blog", icon: <FaBlog className="w-5 h-5" /> },
         { text: "FAQ", href: "/faq", icon: <FaQuestionCircle className="w-5 h-5" /> },
         { text: "Contact", href: "/contact", icon: <FaEnvelope className="w-5 h-5" /> },
     ];
