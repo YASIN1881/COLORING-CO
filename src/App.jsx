@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import TobBar from './components/TopBar/TopBar'
+import TopBar from './components/TopBar/TopBar'
 import NavBar from './components/NavBar/NavBar';
 import Home from './pages/Home';
 import AboutUs from './pages/AboutUs';
@@ -13,7 +13,7 @@ import Footer from './components/Footer/Footer';
 function AppContent() {
     return (
         <div>
-            <TobBar />
+            <TopBar />
             <NavBar />
             <Routes>
                 <Route path="/" element={<Home />} />

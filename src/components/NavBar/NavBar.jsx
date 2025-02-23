@@ -1,7 +1,7 @@
-// import './NavBar.css';
-import { useState } from "react";
+import './NavBar.css';
+import { useState, useEffect } from "react";
 import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube } from "react-icons/fa";
-import { HiMenu, HiX, HiArrowNarrowRight } from "react-icons/hi";
+import { HiMenu, HiX } from "react-icons/hi";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
 import { Link, useLocation } from 'react-router-dom';
@@ -58,6 +58,17 @@ export default function NavBar() {
     const [timeoutId, setTimeoutId] = useState(null);
     const [expandedMobileItems, setExpandedMobileItems] = useState([]);
     const location = useLocation();
+
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isOpen]);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -205,84 +216,98 @@ export default function NavBar() {
                 {/* Mobile-only hamburger menu */}
                 <div className="flex items-center sm:hidden">
                     <button
-                        className="p-2 z-10"
+                        className="p-2 z-50 relative"
                         onClick={toggleMenu}
+                        aria-label="Toggle menu"
                     >
-                        <HiMenu className="w-7 h-7 text-white" />
+                        {isOpen ? (
+                            <HiX className="w-7 h-7 text-white transition-all duration-300 transform hover:rotate-180" />
+                        ) : (
+                            <HiMenu className="w-7 h-7 text-white transition-all duration-300 transform hover:scale-110" />
+                        )}
                     </button>
                 </div>
 
-            {isOpen && (
-                <>
-                    <div className="fixed inset-0 bg-black bg-opacity-50 z-40" onClick={toggleMenu}></div>
-                    <div className="fixed left-0 top-0 w-64 h-full bg-zinc-800 z-50 transform transition-transform duration-300 ease-in-out overflow-y-auto">
-                        <div className="flex justify-between items-center p-4 border-b border-zinc-700">
-                            {/* LOGO */}
-                            <HiX className="text-white w-6 h-6 cursor-pointer" onClick={toggleMenu} />
-                        </div>
-                        <div className="flex flex-col">
-                            {menuItems.map((item, index) => (
-                                <div key={index} className="relative">
-                                    {item.isDropdown ? (
-                                        <>
-                                            <div 
-                                                className={`text-white py-3 px-4 border-b border-zinc-700 
-                                                flex justify-between items-center cursor-pointer
-                                                ${isActiveParent(item.subItems) ? 'text-amber-500' : ''}`}
-                                                onClick={() => toggleMobileSubmenu(item.text)}
-                                            >
-                                                {item.text}
-                                                <IoIosArrowForward 
-                                                    className={`text-amber-500 transition-transform duration-300
-                                                    ${expandedMobileItems.includes(item.text) ? 'rotate-90' : ''}`}
-                                                />
-                                            </div>
-                                            <div 
-                                                className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out
-                                                ${expandedMobileItems.includes(item.text) 
-                                                    ? 'max-h-[500px] opacity-100' 
-                                                    : 'max-h-0 opacity-0'}`}
-                                            >
-                                                {item.subItems.map((subItem, subIndex) => (
-                                                    <NavLink
-                                                        key={subIndex}
-                                                        to={subItem.href}
-                                                        isActive={isActiveLink(subItem.href)}
-                                                        className="py-2 px-8 flex items-center gap-2"
-                                                    >
-                                                        <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 
-                                                            ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}`}
-                                                        />
-                                                        {subItem.text}
-                                                    </NavLink>
-                                                ))}
-                                            </div>
-                                        </>
-                                    ) : (
-                                        <NavLink 
-                                            to={item.href}
-                                            isActive={isActiveLink(item.href)}
-                                            className="py-3 px-4 border-b border-zinc-700 flex justify-between items-center"
+                {/* Mobile menu overlay */}
+                <div 
+                    className={`fixed inset-0 bg-black transition-opacity duration-300 ${
+                        isOpen ? 'opacity-50 z-40' : 'opacity-0 -z-10'
+                    }`} 
+                    onClick={toggleMenu}
+                />
+
+                {/* Mobile menu */}
+                <div 
+                    className={`fixed left-0 top-0 w-64 h-full bg-zinc-800 z-50 transform transition-transform duration-300 ease-in-out ${
+                        isOpen ? 'translate-x-0' : '-translate-x-full'
+                    }`}
+                >
+                    <div className="flex justify-between items-center p-4 border-b border-zinc-700">
+                        {/* LOGO */}
+                        <HiX className="text-white w-6 h-6 cursor-pointer" onClick={toggleMenu} />
+                    </div>
+                    <div className="flex flex-col">
+                        {menuItems.map((item, index) => (
+                            <div key={index} className="relative">
+                                {item.isDropdown ? (
+                                    <>
+                                        <div 
+                                            className={`text-white py-3 px-4 border-b border-zinc-700 
+                                            flex justify-between items-center cursor-pointer
+                                            ${isActiveParent(item.subItems) ? 'text-amber-500' : ''}`}
+                                            onClick={() => toggleMobileSubmenu(item.text)}
                                         >
                                             {item.text}
-                                        </NavLink>
-                                    )}
-                                </div>
-                            ))}
-                        </div>
-                        <div className="mt-8 px-4">
-                            <ContactInfo icon={<MdEmail />} text="needhelp@colorco.com" />
-                            <ContactInfo icon={<MdPhone />} text="666 888 0000" />
-                            <div className="flex gap-4 mt-4">
-                                <SocialIcon icon={<FaFacebookF />} />
-                                <SocialIcon icon={<FaTwitter />} />
-                                <SocialIcon icon={<FaInstagram />} />
-                                <SocialIcon icon={<FaYoutube />} />
+                                            <IoIosArrowForward 
+                                                className={`text-amber-500 transition-transform duration-300
+                                                ${expandedMobileItems.includes(item.text) ? 'rotate-90' : ''}`}
+                                            />
+                                        </div>
+                                        <div 
+                                            className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out
+                                            ${expandedMobileItems.includes(item.text) 
+                                                ? 'max-h-[500px] opacity-100' 
+                                                : 'max-h-0 opacity-0'}`}
+                                        >
+                                            {item.subItems.map((subItem, subIndex) => (
+                                                <NavLink
+                                                    key={subIndex}
+                                                    to={subItem.href}
+                                                    isActive={isActiveLink(subItem.href)}
+                                                    className="py-2 px-8 flex items-center gap-2"
+                                                >
+                                                    <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 
+                                                        ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}`}
+                                                    />
+                                                    {subItem.text}
+                                                </NavLink>
+                                            ))}
+                                        </div>
+                                    </>
+                                ) : (
+                                    <NavLink 
+                                        to={item.href}
+                                        isActive={isActiveLink(item.href)}
+                                        className="py-3 px-4 border-b border-zinc-700 flex justify-between items-center"
+                                    >
+                                        {item.text}
+                                    </NavLink>
+                                )}
                             </div>
+                        ))}
+                    </div>
+                    <div className="mt-8 px-4">
+                        <ContactInfo icon={<MdEmail />} text="needhelp@colorco.com" />
+                        <ContactInfo icon={<MdPhone />} text="666 888 0000" />
+                        <div className="flex gap-4 mt-4">
+                            <SocialIcon icon={<FaFacebookF />} />
+                            <SocialIcon icon={<FaTwitter />} />
+                            <SocialIcon icon={<FaInstagram />} />
+                            <SocialIcon icon={<FaYoutube />} />
                         </div>
                     </div>
-                </>
-            )}
+                </div>
+            </div>
             <style>
                 {`
                 @keyframes subtle-bounce {
@@ -299,7 +324,6 @@ export default function NavBar() {
                 }
                 `}
             </style>
-            </div>
         </nav>
     );
 }

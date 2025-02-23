@@ -57,7 +57,7 @@ const blogs = [
 
 const Home = () => {
     return (
-        <div>
+      <div>
             <Slider />
             <Features />
             <Hero />

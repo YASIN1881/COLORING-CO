@@ -1,48 +1,48 @@
 import { useState } from 'react';
-import { ChevronLeft, ChevronRight, Paintbrush2, Camera, Eye } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Paintbrush2, Camera } from 'lucide-react';
 
 const SideBySide = () => {
     const projects = [
         {
             id: 1,
             type: 'comparison',
-            before: '/img/side by side/1-before.jpg',
-            after: '/img/side by side/1-after.jpg',
+            before: '/img/sidebyside/1-before.jpg',
+            after: '/img/sidebyside/1-after.jpg',
             title: 'Living Room Transformation',
             description: 'Modern makeover with elegant touches'
         },
         {
             id: 2,
             type: 'standalone',
-            image: '/img/side by side/2-standalone.jpg',
+            image: '/img/sidebyside/2-standalone.jpg',
             title: 'Modern Interior Design',
             description: 'Contemporary style with minimalist approach'
         },
         {
             id: 3,
             type: 'comparison',
-            before: '/img/side by side/3-before.jpg',
-            after: '/img/side by side/3-after.jpg',
+            before: '/img/sidebyside/3-before.jpg',
+            after: '/img/sidebyside/3-after.jpg',
             title: 'Kitchen Renovation',
             description: 'Complete kitchen transformation'
         },
         {
             id: 4,
             type: 'standalone',
-            image: '/img/side by side/4-standalone.jpg',
+            image: '/img/sidebyside/4-standalone.jpg',
             title: 'Contemporary Style'
         },
         {
             id: 5,
             type: 'comparison',
-            before: '/img/side by side/5-before.jpg',
-            after: '/img/side by side/5-after.jpg',
+            before: '/img/sidebyside/5-before.jpg',
+            after: '/img/sidebyside/5-after.jpg',
             title: 'Bedroom Makeover'
         },
         {
             id: 6,
             type: 'standalone',
-            image: '/img/side by side/6-standalone.jpg',
+            image: '/img/sidebyside/6-standalone.jpg',
             title: 'Elegant Design'
         }
     ];
