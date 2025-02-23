@@ -40,7 +40,7 @@ const Services = () => {
     const lastTimeRef = useRef(null);
     const animationFrameRef = useRef(null);
     const animateRef = useRef(null);
-    const titles = ["Interior Painting", "Exterior Painting", "Commercial Painting", "Residential Painting", "House Renovation", "Spray Painting", "Wall Repairs", "Color Consulting", "Decorative Finishes", "Surface Preparation"];
+    const titles = ["Interior Painting", "Exterior Painting", "Commercial Painting", "Residential Painting", "House Renovation", "Architectural Design", "Spray Painting", "Wall Repairs", "Color Consulting", "Decorative Finishes", "Surface Preparation"];
 
     useEffect(() => {
         const slider = sliderRef.current;

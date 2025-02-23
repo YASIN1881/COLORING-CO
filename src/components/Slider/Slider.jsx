@@ -62,7 +62,7 @@ Best regards,
 Prospective Client
         `.trim();
 
-        const mailtoLink = `mailto:info@coloringco.com?subject=Quote Request&body=${encodeURIComponent(emailContent)}`;
+        const mailtoLink = `mailto:info@coloringco.com.au?subject=Quote Request&body=${encodeURIComponent(emailContent)}`;
         window.location.href = mailtoLink;
     };
 

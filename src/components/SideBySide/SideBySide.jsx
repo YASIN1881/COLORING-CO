@@ -23,8 +23,8 @@ const SideBySide = () => {
             type: 'comparison',
             before: '/img/sidebyside/3-before.jpg',
             after: '/img/sidebyside/3-after.jpg',
-            title: 'Kitchen Renovation',
-            description: 'Complete kitchen transformation'
+            title: 'Yard Renovation',
+            description: 'Complete yard transformation'
         },
         {
             id: 4,
@@ -37,7 +37,8 @@ const SideBySide = () => {
             type: 'comparison',
             before: '/img/sidebyside/5-before.jpg',
             after: '/img/sidebyside/5-after.jpg',
-            title: 'Bedroom Makeover'
+            title: 'House Facade Renovation',
+            description: 'Complete exterior transformation with modern design'
         },
         {
             id: 6,

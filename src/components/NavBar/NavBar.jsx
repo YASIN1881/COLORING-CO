@@ -333,8 +333,9 @@ export default function NavBar() {
                             opacity: isOpen ? 1 : 0
                         }}
                     >
-                        <ContactInfo icon={<MdEmail />} text="info@coloringco.com" />
+                        <ContactInfo icon={<MdEmail />} text="info@coloringco.com.au" />
                         <ContactInfo icon={<MdPhone />} text="0413709050" />
+                        <ContactInfo icon={<MdPhone />} text="+61402728444" />
                         <div className="flex gap-4">
                             <SocialIcon href="https://www.instagram.com/_coloringco/" icon={<FaInstagram />}/>
                         </div>
@@ -376,12 +377,29 @@ MenuLink.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-const ContactInfo = ({ icon, text }) => (
-    <div className="flex items-center gap-2 text-white mb-2">
-        {icon}
-        <span>{text}</span>
-    </div>
-);
+const ContactInfo = ({ icon, text }) => {
+    // Check if the text is a phone number using a simple regex
+    const isPhoneNumber = /^\+?\d+$/.test(text.replace(/\s/g, ''));
+    
+    if (isPhoneNumber) {
+        return (
+            <a 
+                href={`tel:${text}`} 
+                className="flex items-center gap-2 text-white mb-2 hover:text-amber-500 transition-all duration-300 transform hover:scale-105 cursor-pointer"
+            >
+                {icon}
+                <span>{text}</span>
+            </a>
+        );
+    }
+    
+    return (
+        <div className="flex items-center gap-2 text-white mb-2">
+            {icon}
+            <span>{text}</span>
+        </div>
+    );
+};
 
 ContactInfo.propTypes = {
     icon: PropTypes.element.isRequired,

@@ -73,14 +73,17 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2 text-[#2E2A20]">Quick Contact</h3>
-                                    <p className="text-gray-600 group-hover:text-amber-500 transition-colors duration-300">0413709050</p>
+                                    <div className="flex flex-col gap-1">
+                                        <p className="text-gray-600 group-hover:text-amber-500 transition-colors duration-300">0413709050</p>
+                                        <p className="text-gray-600 group-hover:text-amber-500 transition-colors duration-300">+61402728444</p>
+                                    </div>
                                 </div>
                             </div>
                         </a>
 
                         {/* Support Email Card */}
                         <a 
-                            href="mailto:info@coloringco.com"
+                            href="mailto:info@coloringco.com.au"
                             className="block bg-[#E4DACC] rounded-xl p-8 shadow-lg hover:bg-white transition-all duration-500 group
                                 transform hover:scale-105 cursor-pointer"
                         >
@@ -95,7 +98,7 @@ export default function Contact() {
                                 </div>
                                 <div>
                                     <h3 className="text-xl font-semibold mb-2 text-[#2E2A20]">Support Email</h3>
-                                    <p className="text-gray-600 group-hover:text-amber-500 transition-colors duration-300">info@coloringco.com</p>
+                                    <p className="text-gray-600 group-hover:text-amber-500 transition-colors duration-300">info@coloringco.com.au</p>
                                 </div>
                             </div>
                         </a>

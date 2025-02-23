@@ -19,7 +19,7 @@ Best regards,
 Prospective Client
         `.trim();
 
-        const mailtoLink = `mailto:info@coloringco.com?subject=Free Consultation Request&body=${encodeURIComponent(emailContent)}`;
+        const mailtoLink = `mailto:info@coloringco.com.au?subject=Free Consultation Request&body=${encodeURIComponent(emailContent)}`;
         window.location.href = mailtoLink;
     };
 
@@ -210,7 +210,7 @@ Prospective Client
 
                             {/* Call Us Now Section */}
                             <div className="flex items-center gap-3 sm:gap-4">
-                                <a href="tel:0413709050" className="group border-2 border-white text-white w-[45px] h-[45px] sm:w-[52px] sm:h-[52px] rounded-full 
+                                <a className="group border-2 border-white text-white w-[45px] h-[45px] sm:w-[52px] sm:h-[52px] rounded-full 
                                     hover:bg-white hover:text-black transition-all duration-300 
                                     transform hover:scale-105 backdrop-blur-sm
                                     relative overflow-hidden flex items-center justify-center">
@@ -223,9 +223,14 @@ Prospective Client
                                 
                                 <div className="flex flex-col">
                                     <span className="text-xs sm:text-sm text-gray-400">Call Us Now</span>
-                                    <a href="tel:0413709050" className="text-sm sm:text-base text-white font-medium hover:text-amber-500 transition-colors duration-300">
-                                        0413 709 050
-                                    </a>
+                                    <div className="flex flex-col gap-1">
+                                        <a href="tel:0413709050" className="text-sm sm:text-base text-white font-medium hover:text-amber-500 transition-colors duration-300">
+                                            0413 709 050
+                                        </a>
+                                        <a href="tel:+61402728444" className="text-sm sm:text-base text-white font-medium hover:text-amber-500 transition-colors duration-300">
+                                            +61 402 728 444
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>

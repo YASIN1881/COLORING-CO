@@ -50,7 +50,7 @@ Coloring Co Quote System
     `.trim();
 
     try {
-      const mailtoLink = `mailto:info@coloringco.com?subject=New Quote Request&body=${encodeURIComponent(emailContent)}`;
+      const mailtoLink = `mailto:info@coloringco.com.au?subject=New Quote Request&body=${encodeURIComponent(emailContent)}`;
       window.location.href = mailtoLink;
       
       setSubmitStatus({ show: true, isSuccess: true });
@@ -169,21 +169,8 @@ Coloring Co Quote System
               <span className="absolute -bottom-2 left-0 w-12 h-0.5 bg-gradient-to-r from-amber-500 to-amber-600"></span>
             </h3>
             <p className="text-gray-400 leading-relaxed mb-8">
-              Specializing in residential & commercial painting, professional house renovation, expert spray painting, and modern interior decoration. Delivering premium quality and exceptional craftsmanship for every project.
+              Specializing in residential & commercial painting and renovation services. Our company is at your service with a specialized team with academic degrees. Customer satisfaction is our top priority. We excel in designing, planning, and overseeing the construction of buildings and structures, delivering premium quality and exceptional craftsmanship for every project.
             </p>
-            <button
-              className="group bg-amber-500 text-white px-6 py-3 rounded-full 
-                hover:bg-white hover:text-amber-500 transition-all duration-300 
-                transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
-                relative overflow-hidden"
-            >
-              <span className="relative z-10 flex items-center">
-                Get Consultant
-                <HiArrowNarrowRight className="ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-              </span>
-              <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
-                transition-transform duration-300 origin-left"></div>
-            </button>
           </div>
 
           {/* Explore Links */}
@@ -266,10 +253,19 @@ Coloring Co Quote System
                 </a>
               </li>
               <li>
-                <a href="mailto:info@coloringco.com" className="relative flex items-center gap-3 text-gray-400 hover:text-amber-500 transition-colors duration-500 group">
+                <a href="tel:+61402728444" className="relative flex items-center gap-3 text-gray-400 hover:text-amber-500 transition-colors duration-500 group">
+                  <BiSolidPhoneCall size={20} className="text-amber-500 flex-shrink-0" />
+                  <span className="relative">
+                    +61402728444
+                    <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-amber-500 transition-all duration-500 group-hover:w-full"></span>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:info@coloringco.com.au" className="relative flex items-center gap-3 text-gray-400 hover:text-amber-500 transition-colors duration-500 group">
                   <MdEmail size={20} className="text-amber-500 flex-shrink-0" />
                   <span className="relative">
-                    info@coloringco.com
+                    info@coloringco.com.au
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-amber-500 transition-all duration-500 group-hover:w-full"></span>
                   </span>
                 </a>
