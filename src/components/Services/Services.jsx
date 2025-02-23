@@ -8,14 +8,14 @@ const services = [
         title: "Residential Painting",
         subtitle: "Professional Home Painting",
         image: "/img/service-3-1.jpg",
-        link: "/services/residential"
+        link: "/services/painting"
     },
     {
         id: "02",
         title: "Commercial Painting",
         subtitle: "Business Space Solutions",
         image: "/img/service-3-2.jpg",
-        link: "/services/commercial"
+        link: "/services/painting"
     },
     {
         id: "03",
@@ -29,7 +29,7 @@ const services = [
         title: "Spray Painting",
         subtitle: "Advanced Paint Technology",
         image: "/img/service-3-4.jpg",
-        link: "/services/spray"
+        link: "/services/painting"
     }
 ];
 
@@ -170,16 +170,21 @@ const Services = () => {
                         </div>
 
                         {/* Button styled like Slider buttons */}
-                        <button 
-                            className="group bg-amber-500 text-white px-10 py-4 rounded-full 
-                                hover:bg-white hover:text-amber-500 transition-all duration-300 
-                                transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
-                                relative overflow-hidden min-w-[200px]"
+                        <Link 
+                            to="/services"
+                            className="inline-block"
                         >
-                            <span className="relative z-10">View All Services</span>
-                            <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
-                                transition-transform duration-300 origin-left"></div>
-                        </button>
+                            <button 
+                                className="group bg-amber-500 text-white px-10 py-4 rounded-full 
+                                    hover:bg-white hover:text-amber-500 transition-all duration-300 
+                                    transform hover:scale-105 shadow-lg hover:shadow-amber-500/50
+                                    relative overflow-hidden min-w-[200px]"
+                            >
+                                <span className="relative z-10">View All Services</span>
+                                <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 
+                                    transition-transform duration-300 origin-left"></div>
+                            </button>
+                        </Link>
                     </div>
 
                     {/* Bottom Border Line with enhanced gradient */}

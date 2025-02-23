@@ -1,6 +1,6 @@
 import './NavBar.css';
 import { useState, useEffect } from "react";
-import { FaInstagram, FaHome, FaInfoCircle, FaTools, FaBlog, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaHome, FaInfoCircle, FaTools, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
@@ -67,8 +67,11 @@ export default function NavBar() {
         }
         return () => {
             document.body.style.overflow = 'unset';
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
         };
-    }, [isOpen]);
+    }, [isOpen, timeoutId]);
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -77,6 +80,7 @@ export default function NavBar() {
     const handleMouseEnter = (item) => {
         if (timeoutId) {
             clearTimeout(timeoutId);
+            setTimeoutId(null);
         }
         setHoveredItem(item);
     };
@@ -84,8 +88,17 @@ export default function NavBar() {
     const handleMouseLeave = () => {
         const id = setTimeout(() => {
             setHoveredItem(null);
-        }, 200); // Delay before hiding the submenu
+        }, 800); // Increased delay to 800ms for better usability
         setTimeoutId(id);
+    };
+
+    const handleSubItemClick = () => {
+        if (timeoutId) {
+            clearTimeout(timeoutId);
+            setTimeoutId(null);
+        }
+        setHoveredItem(null);
+        setIsOpen(false);
     };
 
     const toggleMobileSubmenu = (itemText) => {
@@ -97,8 +110,8 @@ export default function NavBar() {
     };
 
     const isActiveLink = (href) => location.pathname === href;
-    const isActiveParent = (subItems) => {
-        return subItems?.some(item => location.pathname === item.href);
+    const isActiveParent = (subItems, parentHref) => {
+        return location.pathname === parentHref || subItems?.some(item => location.pathname === item.href);
     };
 
     const menuItems = [
@@ -106,14 +119,14 @@ export default function NavBar() {
         { text: "About Us", href: "/about-us", icon: <FaInfoCircle className="w-5 h-5" /> },
         { 
             text: "Services", 
-            href: "#",
+            href: "/services",
             icon: <FaTools className="w-5 h-5" />,
             isDropdown: true,
             subItems: [
-                { text: "Residential Painting", href: "/services/residential" },
-                { text: "Commercial Painting", href: "/services/commercial" },
-                { text: "House Renovation", href: "/services/renovation" },
-                { text: "Spray Painting", href: "/services/spray" }
+                { text: 'Professional Painting', href: '/services/painting' },
+                { text: 'Interior & Exterior Design', href: '/services/design' },
+                { text: 'Architectural Design', href: '/services/architectural' },
+                { text: 'Renovation', href: '/services/renovation' }
             ]
         },
         // { text: "Blog", href: "/blog", icon: <FaBlog className="w-5 h-5" /> },
@@ -156,18 +169,49 @@ export default function NavBar() {
                                 onMouseLeave={handleMouseLeave}
                             >
                                 {item.isDropdown ? (
-                                    <div className={`relative text-white cursor-pointer transition-colors duration-500
-                                        ${(isActiveParent(item.subItems) || hoveredItem === item.text) ? 'text-amber-500' : ''}
-                                        group-hover:text-amber-500
-                                        before:content-[''] before:absolute before:bottom-0 before:left-0 
-                                        before:w-0 before:h-[2px] before:bg-amber-500 before:transition-all before:duration-500
-                                        group-hover:before:w-full lg:group-hover:before:w-full
-                                        ${isActiveParent(item.subItems) ? 'before:w-full' : 'before:w-0'}`}
-                                    >
-                                        <div className="flex items-center gap-3">
-                                            {item.icon}
-                                            <span>{item.text}</span>
+                                    <div className="relative">
+                                        <div
+                                            className={`relative text-white cursor-pointer transition-colors duration-500
+                                                ${(isActiveParent(item.subItems, item.href) || hoveredItem === item.text) ? 'text-amber-500' : ''}
+                                                group-hover:text-amber-500
+                                                before:content-[''] before:absolute before:bottom-0 before:left-0 
+                                                before:w-0 before:h-[2px] before:bg-amber-500 before:transition-all before:duration-500
+                                                group-hover:before:w-full lg:group-hover:before:w-full
+                                                ${isActiveParent(item.subItems, item.href) ? 'before:w-full' : 'before:w-0'}`}
+                                        >
+                                            <div className="flex items-center gap-3">
+                                                {item.icon}
+                                                <Link to={item.href} className="flex-1">
+                                                    <span>{item.text}</span>
+                                                </Link>
+                                            </div>
                                         </div>
+                                        {item.subItems && hoveredItem === item.text && (
+                                            <div
+                                                className="absolute left-0 mt-2 w-64 bg-[#2E2A20] shadow-lg z-50 rounded-lg
+                                                    animate-slideDown origin-top border border-amber-500/10"
+                                                onMouseEnter={() => handleMouseEnter(item.text)}
+                                                onMouseLeave={handleMouseLeave}
+                                            >
+                                                <div className="py-2">
+                                                    {item.subItems.map((subItem, subIndex) => (
+                                                        <Link
+                                                            key={subIndex}
+                                                            to={subItem.href}
+                                                            className={`block px-4 py-3 text-base hover:bg-[#F4EDE4] hover:text-[#2E2A20]
+                                                                transition-all duration-300 flex items-center gap-3
+                                                                ${isActiveLink(subItem.href) ? 'text-amber-500 bg-amber-500/5' : 'text-white'}`}
+                                                            onClick={handleSubItemClick}
+                                                        >
+                                                            <span className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 
+                                                                group-hover:opacity-100 transition-opacity duration-300"
+                                                            />
+                                                            {subItem.text}
+                                                        </Link>
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        )}
                                     </div>
                                 ) : (
                                     <NavLink to={item.href} isActive={isActiveLink(item.href)}>
@@ -176,38 +220,6 @@ export default function NavBar() {
                                             <span>{item.text}</span>
                                         </div>
                                     </NavLink>
-                                )}
-                                {item.subItems && hoveredItem === item.text && (
-                                    <div
-                                        className="absolute left-0 mt-2 w-48 bg-[#2E2A20] shadow-lg z-10 p-3
-                                        animate-slideDown origin-top"
-                                        onMouseEnter={() => handleMouseEnter(item.text)}
-                                        onMouseLeave={handleMouseLeave}
-                                    >
-                                        {item.subItems.map((subItem, subIndex) => (
-                                            <div
-                                                key={subIndex}
-                                                className="relative group/item flex items-center gap-2"
-                                            >
-                                                <span className="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 
-                                                    group-hover/item:opacity-100 transition-opacity duration-300"
-                                                />
-                                                <NavLink
-                                                    to={subItem.href}
-                                                    isActive={isActiveLink(subItem.href)}
-                                                    className="block px-4 py-2 text-sm hover:bg-[#F4EDE4] hover:text-[#2E2A20]
-                                                    transition-all duration-300 rounded-sm flex-1"
-                                                >
-                                                    <div className="flex items-center gap-3">
-                                                        <span className={`w-1.5 h-1.5 rounded-full bg-amber-500 
-                                                            ${isActiveLink(subItem.href) ? 'opacity-100' : 'opacity-0'}`}
-                                                        />
-                                                        <span>{subItem.text}</span>
-                                                    </div>
-                                                </NavLink>
-                                            </div>
-                                        ))}
-                                    </div>
                                 )}
                             </div>
                         ))}
@@ -278,17 +290,24 @@ export default function NavBar() {
                                         <div 
                                             className={`text-white py-3 px-4 border-b border-zinc-700 
                                             flex justify-between items-center cursor-pointer hover:bg-zinc-700/50 transition-colors duration-300
-                                            ${isActiveParent(item.subItems) ? 'text-amber-500' : ''}`}
-                                            onClick={() => toggleMobileSubmenu(item.text)}
+                                            ${isActiveParent(item.subItems, item.href) ? 'text-amber-500' : ''}`}
                                         >
-                                            <div className="flex items-center gap-3">
+                                            <Link 
+                                                to={item.href}
+                                                className="flex items-center gap-3 flex-1"
+                                            >
                                                 {item.icon}
                                                 <span>{item.text}</span>
-                                            </div>
-                                            <IoIosArrowForward 
-                                                className={`text-amber-500 transition-transform duration-300
-                                                ${expandedMobileItems.includes(item.text) ? 'rotate-90' : ''}`}
-                                            />
+                                            </Link>
+                                            <button 
+                                                onClick={() => toggleMobileSubmenu(item.text)}
+                                                className="ml-2"
+                                            >
+                                                <IoIosArrowForward 
+                                                    className={`text-amber-500 transition-transform duration-300
+                                                    ${expandedMobileItems.includes(item.text) ? 'rotate-90' : ''}`}
+                                                />
+                                            </button>
                                         </div>
                                         <div 
                                             className={`flex flex-col overflow-hidden transition-all duration-300 ease-in-out bg-zinc-900

@@ -212,10 +212,10 @@ Coloring Co Quote System
             </h3>
             <ul className="space-y-3">
               {[
-                { text: 'Interior Design', path: '/services/residential' },
-                { text: 'Exterior Design', path: '/services/commercial' },
-                { text: 'Construction', path: '/services/renovation' },
-                { text: 'Renovation', path: '/services/spray' }
+                { text: 'Professional Painting', path: '/services/painting' },
+                { text: 'Interior & Exterior Design', path: '/services/design' },
+                { text: 'Architectural Design', path: '/services/architectural' },
+                { text: 'Renovation', path: '/services/renovation' },
               ].map((service) => (
                 <li key={service.text} className="text-gray-400">
                   <Link to={service.path} className="relative hover:text-amber-500 transition-colors duration-500 flex items-center group">
