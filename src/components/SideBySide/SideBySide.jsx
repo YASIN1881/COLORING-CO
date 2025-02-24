@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ChevronLeft, ChevronRight, Paintbrush2, Camera } from 'lucide-react';
 
 const SideBySide = () => {
@@ -51,6 +51,9 @@ const SideBySide = () => {
     const [sliderPositions, setSliderPositions] = useState(
         projects.reduce((acc, project) => ({ ...acc, [project.id]: 50 }), {})
     );
+    const [isDragging, setIsDragging] = useState(false);
+    const [activeProjectId, setActiveProjectId] = useState(null);
+    const sliderRefs = useRef({});
 
     const handleSliderChange = (projectId, position) => {
         setSliderPositions(prev => ({
@@ -59,11 +62,45 @@ const SideBySide = () => {
         }));
     };
 
+    const startDragging = (projectId) => {
+        setIsDragging(true);
+        setActiveProjectId(projectId);
+    };
+
+    const stopDragging = () => {
+        setIsDragging(false);
+        setActiveProjectId(null);
+    };
+
     const handleInteraction = (e, projectId) => {
-        const bounds = e.currentTarget.getBoundingClientRect();
-        const position = ((('touches' in e ? e.touches[0].clientX : e.clientX) - bounds.left) / bounds.width) * 100;
+        if (!isDragging && e.type !== 'mousemove') return;
+        if (!sliderRefs.current[projectId]) return;
+        
+        const bounds = sliderRefs.current[projectId].getBoundingClientRect();
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        const position = ((clientX - bounds.left) / bounds.width) * 100;
         handleSliderChange(projectId, Math.min(Math.max(position, 0), 100));
     };
+
+    // Add global event listeners for dragging
+    useEffect(() => {
+        if (isDragging && activeProjectId !== null) {
+            const handleMouseMove = (e) => handleInteraction(e, activeProjectId);
+            const handleTouchMove = (e) => handleInteraction(e, activeProjectId);
+            
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', stopDragging);
+            document.addEventListener('touchmove', handleTouchMove);
+            document.addEventListener('touchend', stopDragging);
+
+            return () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', stopDragging);
+                document.removeEventListener('touchmove', handleTouchMove);
+                document.removeEventListener('touchend', stopDragging);
+            };
+        }
+    }, [isDragging, activeProjectId]);
 
     return (
         <section className="w-full bg-[#2e2a20] py-16 md:py-20 relative">
@@ -109,9 +146,10 @@ const SideBySide = () => {
                         >
                             {project.type === 'comparison' ? (
                                 <div 
-                                    className="relative h-[280px] sm:h-[320px] md:h-[360px] lg:h-[400px] cursor-ew-resize touch-pan-x"
-                                    onMouseMove={(e) => handleInteraction(e, project.id)}
-                                    onTouchMove={(e) => handleInteraction(e, project.id)}
+                                    ref={el => sliderRefs.current[project.id] = el}
+                                    className="relative h-[280px] sm:h-[320px] md:h-[360px] lg:h-[400px] cursor-ew-resize touch-pan-x select-none"
+                                    onMouseDown={() => startDragging(project.id)}
+                                    onTouchStart={() => startDragging(project.id)}
                                 >
                                     {/* After Image */}
                                     <div className="absolute inset-0 transition-transform duration-700 ease-out">

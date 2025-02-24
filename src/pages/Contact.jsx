@@ -146,39 +146,16 @@ export default function Contact() {
                                                 transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
                                         />
                                     </div>
-                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
-                                        <select
-                                            name="department"
-                                            value={formData.department}
-                                            onChange={handleChange}
-                                            className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl bg-[#2E2A20] border border-amber-500/10
-                                                focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 
-                                                transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base
-                                                appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%23f59e0b%22%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%2F%3E%3C%2Fsvg%3E')] 
-                                                bg-no-repeat bg-[length:20px_20px] bg-[right_16px_center]"
-                                        >
-                                            <option value="" disabled selected className="text-gray-400">Select Department</option>
-                                            <option value="residential" className="bg-[#2E2A20] text-white">Residential</option>
-                                            <option value="commercial" className="bg-[#2E2A20] text-white">Commercial</option>
-                                            <option value="industrial" className="bg-[#2E2A20] text-white">Industrial</option>
-                                        </select>
-                                        <select
+                                    <input
+                                            type="text"
                                             name="subject"
+                                            placeholder="Subject"
                                             value={formData.subject}
                                             onChange={handleChange}
                                             className="w-full px-4 sm:px-6 py-3 sm:py-4 rounded-xl bg-[#2E2A20] border border-amber-500/10
                                                 focus:border-amber-500 focus:ring-2 focus:ring-amber-500/20 
-                                                transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base
-                                                appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2020%2020%22%3E%3Cpath%20fill%3D%22%23f59e0b%22%20d%3D%22M5.293%207.293a1%201%200%20011.414%200L10%2010.586l3.293-3.293a1%201%200%20111.414%201.414l-4%204a1%201%200%2001-1.414%200l-4-4a1%201%200%20010-1.414z%22%2F%3E%3C%2Fsvg%3E')] 
-                                                bg-no-repeat bg-[length:20px_20px] bg-[right_16px_center]"
-                                        >
-                                            <option value="" disabled selected className="text-gray-400">Select Service</option>
-                                            <option value="professional_painting" className="bg-[#2E2A20] text-white">Professional Painting</option>
-                                            <option value="interior_exterior_design" className="bg-[#2E2A20] text-white">Interior & Exterior Design</option>
-                                            <option value="architectural_design" className="bg-[#2E2A20] text-white">Architectural Design</option>
-                                            <option value="renovation" className="bg-[#2E2A20] text-white">Renovation</option>
-                                        </select>
-                                    </div>
+                                                transition-all duration-300 text-white placeholder-gray-400 text-sm sm:text-base"
+                                        />
                                     <textarea
                                         name="message"
                                         placeholder="Your Message"
@@ -220,9 +197,9 @@ export default function Contact() {
                                     before:to-transparent before:opacity-0 before:transition-opacity before:duration-500 
                                     group-hover:before:opacity-100">
                                     <img 
-                                        src="/img/service-3-2.jpg" 
-                                        alt="Contact Us" 
-                                        className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover transform transition-transform 
+                                        src="/img/contact-us.jpg"
+                                        alt="Contact Us"
+                                        className="w-full h-[300px] sm:h-[400px] lg:h-[600px] object-cover transform transition-transform 
                                             duration-700 group-hover:scale-110"
                                     />
                                 </div>

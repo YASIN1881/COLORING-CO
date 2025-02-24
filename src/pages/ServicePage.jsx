@@ -49,29 +49,29 @@ const serviceData = {
             "3D visualization services"
         ],
         images: [
-            "/img/service-3-2.jpg",
-            "/img/service-3-3.jpg",
-            "/img/service-3-1.jpg"
+            "/img/services/design/1.avif",
+            "/img/services/design/2.jpeg",
+            "/img/services/design/3.avif"
         ],
         bgPattern: "radial-gradient(circle at 1px 1px, #2E2A20 1px, transparent 0) 0 0/40px 40px"
     },
     architectural: {
         title: "Architectural Design",
         subtitle: "Visionary Architecture",
-        description: "Bringing architectural visions to life with innovative solutions that combine form and function. We create spaces that inspire and endure.",
+        description: "Bringing architectural visions to life with innovative solutions that harmonize form, function, and sustainability. Our expert team creates spaces that not only inspire and endure but also reflect your unique identity while optimizing spatial efficiency and environmental performance.",
         icon: <FaRulerCombined className="w-12 h-12" />,
         features: [
-            "Custom architectural planning",
-            "Structural design services",
-            "Building permit assistance",
-            "Sustainable design options",
-            "Project documentation",
-            "Construction supervision"
+            "Custom architectural planning with detailed spatial analysis and optimization",
+            "Comprehensive structural design services ensuring safety, durability, and aesthetic integrity",
+            "Complete building permit assistance and regulatory compliance management",
+            "Innovative sustainable design options incorporating energy efficiency and eco-friendly materials",
+            "Meticulous project documentation including detailed blueprints and specifications",
+            "Expert construction supervision ensuring precise implementation of design vision"
         ],
         images: [
-            "/img/service-3-3.jpg",
-            "/img/service-3-1.jpg",
-            "/img/service-3-2.jpg"
+            "/img/services/Architectural/1.avif",
+            "/img/services/Architectural/2.webp",
+            "/img/services/Architectural/3.webp"
         ],
         bgPattern: "linear-gradient(0deg, #2E2A20 1px, transparent 1px) 0 0/20px 20px"
     },
@@ -89,9 +89,9 @@ const serviceData = {
             "Project management services"
         ],
         images: [
-            "/img/service-3-4.jpg",
-            "/img/service-3-2.jpg",
-            "/img/service-3-1.jpg"
+            "/img/services/renovation/1.jpg",
+            "/img/services/renovation/2.jpg",
+            "/img/services/renovation/3.jpg"
         ],
         bgPattern: "repeating-linear-gradient(45deg, #2E2A20 0, #2E2A20 1px, transparent 0, transparent 50%) 0 0/20px 20px"
     }
@@ -134,10 +134,6 @@ const PaintingService = ({ service }) => (
                                 <span>Get Quote</span>
                                 <FaArrowRight />
                             </Link>
-                            <button className="px-8 py-4 border-2 border-amber-500 text-amber-500 rounded-full
-                                hover:bg-amber-500 hover:text-white transition-all duration-300">
-                                View Portfolio
-                            </button>
                         </div>
                     </div>
                     
@@ -165,9 +161,7 @@ const PaintingService = ({ service }) => (
                             key={index}
                             className="group relative overflow-hidden"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500 to-red-500 opacity-0 
-                                group-hover:opacity-10 transition-opacity duration-500"></div>
-                            <div className="relative bg-[#262219] p-8 rounded-[2rem] rounded-br-none border-l-4 
+                            <div className="relative bg-[#262219] p-8 mt-4 rounded-[2rem] rounded-br-none border-l-4 
                                 border-amber-500 transform group-hover:-translate-y-2 transition-transform duration-500">
                                 <div className="flex items-start gap-4">
                                     <FaSwatchbook className="w-8 h-8 text-amber-500" />
@@ -189,19 +183,19 @@ const PaintingService = ({ service }) => (
                     {service.images.slice(1).map((image, index) => (
                         <div 
                             key={index}
-                            className="group relative"
+                            className="group relative overflow-hidden rounded-[2.5rem] rounded-br-none"
                         >
-                            <div className="absolute inset-0 bg-gradient-to-b from-amber-500 to-red-500 
+                            <div className="absolute inset-0 bg-gradient-to-b from-black to-transparent 
                                 rounded-[2.5rem] rounded-br-none opacity-0 group-hover:opacity-20 
-                                transition-opacity duration-500"></div>
+                                transition-opacity duration-500 z-10"></div>
                             <img 
                                 src={image}
                                 alt={`${service.title} ${index + 2}`}
-                                className="w-full h-[300px] object-cover rounded-[2.5rem] rounded-br-none 
+                                className="w-full h-[300px] object-cover 
                                     transform group-hover:scale-105 transition-transform duration-500"
                             />
                             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t 
-                                from-black to-transparent"></div>
+                                from-black to-transparent z-20"></div>
                         </div>
                     ))}
                 </div>
@@ -280,7 +274,7 @@ const DesignService = ({ service }) => (
                             key={index}
                             className="relative group"
                         >
-                            <div className="absolute inset-0 bg-amber-500/5 rounded-[2rem] rounded-br-none 
+                            <div className="absolute inset-0 rounded-[2rem] rounded-br-none 
                                 transform group-hover:scale-95 transition-transform duration-500"></div>
                             <div className="relative bg-[#262219] p-8 rounded-[2rem] rounded-br-none">
                                 <div className="flex flex-col gap-4">
@@ -324,7 +318,7 @@ const ArchitecturalService = ({ service }) => (
                             <FaDrawPolygon className="w-8 h-8 text-amber-300" />
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                            Architectural Excellence
+                            Crafting Visionary<br/>Architectural Spaces
                         </h1>
                         <div className="h-1 w-24 bg-amber-500 mb-8"></div>
                         <p className="text-gray-400 text-lg mb-8">
@@ -364,7 +358,7 @@ const ArchitecturalService = ({ service }) => (
                             key={index}
                             className="relative group"
                         >
-                            <div className="absolute inset-0 bg-amber-500/5 rounded-[2rem] rounded-br-none"></div>
+                            <div className="absolute inset-0  rounded-[2rem] rounded-br-none"></div>
                             <div className="relative bg-[#262219] p-8 rounded-[2rem] rounded-br-none border-2 
                                 border-amber-500/10 group-hover:border-amber-500/30 transition-colors duration-300">
                                 <div className="flex items-start gap-6">
@@ -374,7 +368,12 @@ const ArchitecturalService = ({ service }) => (
                                     </div>
                                     <div>
                                         <h3 className="text-white text-xl font-semibold mb-2">
-                                            Technical Aspect {index + 1}
+                                            {index === 0 ? "Spatial Innovation" : 
+                                             index === 1 ? "Structural Integrity" : 
+                                             index === 2 ? "Regulatory Compliance" : 
+                                             index === 3 ? "Sustainable Solutions" :
+                                             index === 4 ? "Detailed Documentation" :
+                                             "Construction Excellence"}
                                         </h3>
                                         <p className="text-gray-400">
                                             {feature}
@@ -432,15 +431,15 @@ const RenovationService = ({ service }) => (
                     {service.images.map((image, index) => (
                         <div 
                             key={index}
-                            className="relative group"
+                            className="relative group overflow-hidden rounded-[2.5rem] rounded-br-none"
                         >
                             <div className="absolute inset-0 bg-gradient-to-t from-amber-500/20 to-transparent 
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-500 
-                                rounded-[2.5rem] rounded-br-none"></div>
+                                z-10"></div>
                             <img 
                                 src={image}
                                 alt={`Renovation ${index + 1}`}
-                                className="w-full h-[300px] object-cover rounded-[2.5rem] rounded-br-none 
+                                className="w-full h-[300px] object-cover
                                     transform group-hover:scale-105 transition-transform duration-500"
                             />
                         </div>
@@ -458,7 +457,7 @@ const RenovationService = ({ service }) => (
                             key={index}
                             className="relative group"
                         >
-                            <div className="absolute inset-0 bg-amber-500/5 rounded-[2rem] rounded-br-none"></div>
+                            <div className="absolute inset-0 rounded-[2rem] rounded-br-none"></div>
                             <div className="relative bg-[#262219] p-8 rounded-[2rem] rounded-br-none">
                                 <div className="flex items-center gap-6">
                                     <div className="w-16 h-16 rounded-full bg-amber-500/10 flex items-center 

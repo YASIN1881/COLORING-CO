@@ -41,6 +41,8 @@ export default function AboutUs() {
     const [sliderPosition, setSliderPosition] = useState(50);
     const videoRef = useRef(null);
     const intervalRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const sliderRef = useRef(null);
 
     // Services Interval Effect
     useEffect(() => {
@@ -118,10 +120,32 @@ export default function AboutUs() {
     );
 
     const handleSliderInteraction = (e) => {
-        const bounds = e.currentTarget.getBoundingClientRect();
-        const position = ((('touches' in e ? e.touches[0].clientX : e.clientX) - bounds.left) / bounds.width) * 100;
+        if (!isDragging && e.type !== 'mousemove') return;
+        if (!sliderRef.current) return;
+        
+        const bounds = sliderRef.current.getBoundingClientRect();
+        const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
+        const position = ((clientX - bounds.left) / bounds.width) * 100;
         setSliderPosition(Math.min(Math.max(position, 0), 100));
     };
+
+    const startDragging = () => setIsDragging(true);
+    const stopDragging = () => setIsDragging(false);
+
+    useEffect(() => {
+        if (isDragging) {
+            document.addEventListener('mousemove', handleSliderInteraction);
+            document.addEventListener('mouseup', stopDragging);
+            document.addEventListener('touchmove', handleSliderInteraction);
+            document.addEventListener('touchend', stopDragging);
+        }
+        return () => {
+            document.removeEventListener('mousemove', handleSliderInteraction);
+            document.removeEventListener('mouseup', stopDragging);
+            document.removeEventListener('touchmove', handleSliderInteraction);
+            document.removeEventListener('touchend', stopDragging);
+        };
+    }, [isDragging]);
 
     return (
         <div className="bg-[#2E2A20]">
@@ -182,7 +206,7 @@ export default function AboutUs() {
                                 before:absolute before:inset-0 before:bg-gradient-to-t before:from-black/50 before:to-transparent
                                 before:opacity-0 before:transition-opacity before:duration-500 group-hover:before:opacity-100">
                                 <img 
-                                    src="/img/service-3-2.jpg" 
+                                    src="/img/aboutUs.jpg"
                                     alt="Professional Painting Team" 
                                     className="w-full h-[600px] object-cover transform transition-transform duration-700 
                                         group-hover:scale-110"
@@ -340,8 +364,7 @@ export default function AboutUs() {
                     <div className="max-w-4xl mx-auto text-center space-y-8">
                         <FaQuoteRight className="w-16 h-16 text-amber-500/20 mx-auto" />
                         <blockquote className="text-2xl md:text-3xl text-white font-medium italic leading-relaxed">
-                            &ldquo;Our passion for perfection and dedication to customer satisfaction drives us to deliver
-                            exceptional painting and renovation services that transform spaces and exceed expectations.&rdquo;
+                            &ldquo;Customer satisfaction is our top priority&rdquo;
                         </blockquote>
                         <div className="flex items-center justify-center gap-4">
                             <span className="w-12 h-0.5 bg-amber-500/30"></span>
@@ -359,9 +382,10 @@ export default function AboutUs() {
                         <div className="grid grid-cols-1 lg:grid-cols-2">
                             {/* Left Side - Interactive Before/After Slider */}
                             <div 
-                                className="relative h-[400px] lg:h-[500px] cursor-ew-resize touch-pan-x"
-                                onMouseMove={handleSliderInteraction}
-                                onTouchMove={handleSliderInteraction}
+                                ref={sliderRef}
+                                className="relative h-[400px] lg:h-[500px] cursor-ew-resize touch-pan-x select-none"
+                                onMouseDown={startDragging}
+                                onTouchStart={startDragging}
                             >
                                 {/* After Image */}
                                 <div className="absolute inset-0 transition-transform duration-700 ease-out">
@@ -392,8 +416,10 @@ export default function AboutUs() {
 
                                 {/* Slider Handle */}
                                 <div 
-                                    className="absolute top-0 bottom-0 w-0.5 sm:w-1 bg-white/80 backdrop-blur-sm"
+                                    className="absolute top-0 bottom-0 w-0.5 sm:w-1 bg-white/80 backdrop-blur-sm cursor-ew-resize"
                                     style={{ left: `${sliderPosition}%` }}
+                                    onMouseDown={startDragging}
+                                    onTouchStart={startDragging}
                                 >
                                     <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 
                                         rounded-full bg-white/90 backdrop-blur-md shadow-lg flex items-center justify-center 

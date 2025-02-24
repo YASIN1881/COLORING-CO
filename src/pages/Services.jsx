@@ -39,9 +39,9 @@ const services = [
             "Space Planning"
         ],
         images: [
-            "/img/service-3-2.jpg",
-            "/img/service-3-3.jpg",
-            "/img/service-3-1.jpg"
+            "/img/services/design/1.avif",
+            "/img/services/design/2.jpeg",
+            "/img/services/design/3.avif"
         ],
         link: "/services/design"
     },
@@ -59,9 +59,9 @@ const services = [
             "Sustainable Design"
         ],
         images: [
-            "/img/service-3-3.jpg",
-            "/img/service-3-1.jpg",
-            "/img/service-3-2.jpg"
+            "/img/services/Architectural/1.avif",
+            "/img/services/Architectural/2.webp",
+            "/img/services/Architectural/3.webp"
         ],
         link: "/services/architectural"
     },
@@ -79,9 +79,9 @@ const services = [
             "General Remodeling"
         ],
         images: [
-            "/img/service-3-4.jpg",
-            "/img/service-3-2.jpg",
-            "/img/service-3-1.jpg"
+            "/img/services/renovation/1.jpg",
+            "/img/services/renovation/2.jpg",
+            "/img/services/renovation/3.jpg"
         ],
         link: "/services/renovation"
     }

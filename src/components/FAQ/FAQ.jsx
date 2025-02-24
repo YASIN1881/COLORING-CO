@@ -155,7 +155,7 @@ const FAQCategory = ({ category, activeQuestionId, setActiveQuestionId }) => (
                     <div className={`transition-all duration-500 ${
                         activeQuestionId === item.id 
                             ? 'bg-amber-500 border-amber-500' 
-                            : 'bg-[#262219] hover:bg-[#2A2620]'
+                            : 'bg-[#262219] hover:bg-[#323028]'
                         } rounded-xl border border-amber-500/10 shadow-[0_4px_20px_0px_rgba(0,0,0,0.1)]
                         hover:shadow-[0_6px_24px_0px_rgba(234,179,8,0.12)] hover:border-amber-500/30`}
                     >
@@ -164,13 +164,13 @@ const FAQCategory = ({ category, activeQuestionId, setActiveQuestionId }) => (
                             className="w-full px-8 py-5 flex items-center justify-between group"
                         >
                             <span className={`font-medium text-lg transition-colors duration-300 text-left
-                                ${activeQuestionId === item.id ? 'text-white' : 'text-gray-200 group-hover:text-white'}`}>
+                                ${activeQuestionId === item.id ? 'text-white' : 'text-white'}`}>
                                 {item.question}
                             </span>
                             <div className={`relative w-6 h-6 flex items-center justify-center transition-transform duration-300
                                 ${activeQuestionId === item.id ? 'rotate-180' : ''}`}>
                                 <span className={`text-2xl font-normal select-none
-                                    ${activeQuestionId === item.id ? 'text-white' : 'text-amber-500'}`}>
+                                    ${activeQuestionId === item.id ? 'text-amber-500' : 'text-white'}`}>
                                     {activeQuestionId === item.id ? '−' : '+'}
                                 </span>
                             </div>
