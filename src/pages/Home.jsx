@@ -6,6 +6,7 @@ import Projects from '../components/Projects/Projects';
 import SideBySide from '../components/SideBySide/SideBySide';
 import Testimonials from '../components/Testimonials/Testimonials';
 import TeamGallerySection from '../components/TeamGallerySection/TeamGallerySection';
+import InsuranceCoverage from '../components/InsuranceCoverage/InsuranceCoverage';
 // import BlogSection from '../components/BlogSection/BlogSection';
 import HomeFaq from '../components/HomeFaq/HomeFaq';
 
@@ -67,6 +68,7 @@ const Home = () => {
             <SideBySide />
             <Testimonials />
             <TeamGallerySection teamMembers={teamMembers} />
+            <InsuranceCoverage />
             {/* <BlogSection blogs={blogs} /> */}
         </div>
     );

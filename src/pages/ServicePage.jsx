@@ -14,22 +14,6 @@ const serviceShape = {
     images: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-PaintingService.propTypes = {
-    service: PropTypes.shape(serviceShape).isRequired,
-};
-
-DesignService.propTypes = {
-    service: PropTypes.shape(serviceShape).isRequired,
-};
-
-ArchitecturalService.propTypes = {
-    service: PropTypes.shape(serviceShape).isRequired,
-};
-
-RenovationService.propTypes = {
-    service: PropTypes.shape(serviceShape).isRequired,
-};
-
 const serviceData = {
     painting: {
         title: "Professional Painting",
@@ -226,6 +210,10 @@ const PaintingService = ({ service }) => (
     </div>
 );
 
+PaintingService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
+
 const DesignService = ({ service }) => (
     <div className="bg-[#2E2A20]">
         {/* Modern Grid Header */}
@@ -312,6 +300,10 @@ const DesignService = ({ service }) => (
     </div>
 );
 
+DesignService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
+
 const ArchitecturalService = ({ service }) => (
     <div className="bg-[#2E2A20]">
         {/* Blueprint Style Header */}
@@ -397,6 +389,10 @@ const ArchitecturalService = ({ service }) => (
         </section>
     </div>
 );
+
+ArchitecturalService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
 
 const RenovationService = ({ service }) => (
     <div className="bg-[#2E2A20]">
@@ -486,6 +482,10 @@ const RenovationService = ({ service }) => (
         </section>
     </div>
 );
+
+RenovationService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
 
 export default function ServicePage() {
     const { serviceType } = useParams();
