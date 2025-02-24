@@ -1,9 +1,34 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
-import { FaPaintRoller, FaPalette, FaRulerCombined, FaHome, FaCheck, FaArrowRight, 
+import { FaPaintRoller, FaPalette, FaRulerCombined, FaHome, FaArrowRight, 
     FaPaintBrush, FaSprayCan, FaSwatchbook, FaTools, FaRuler, FaCompass, 
     FaDrawPolygon, FaHardHat, FaHammer } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
+const serviceShape = {
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    features: PropTypes.arrayOf(PropTypes.string).isRequired,
+    images: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
+PaintingService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
+
+DesignService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
+
+ArchitecturalService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
+
+RenovationService.propTypes = {
+    service: PropTypes.shape(serviceShape).isRequired,
+};
 
 const serviceData = {
     painting: {

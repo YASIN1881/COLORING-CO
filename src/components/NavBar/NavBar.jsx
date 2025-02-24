@@ -198,7 +198,7 @@ export default function NavBar() {
                                                         <Link
                                                             key={subIndex}
                                                             to={subItem.href}
-                                                            className={`block px-4 py-3 text-base hover:bg-[#F4EDE4] hover:text-[#2E2A20]
+                                                            className={`px-4 py-3 text-base hover:bg-[#F4EDE4] hover:text-[#2E2A20]
                                                                 transition-all duration-300 flex items-center gap-3
                                                                 ${isActiveLink(subItem.href) ? 'text-amber-500 bg-amber-500/5' : 'text-white'}`}
                                                             onClick={handleSubItemClick}
