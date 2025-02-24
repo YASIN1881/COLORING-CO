@@ -8,6 +8,7 @@ import Blog from './pages/Blog';
 import FAQ from './pages/FAQ';
 import Contact from './pages/Contact';
 import ServicePage from './pages/ServicePage';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer/Footer';
 
 function AppContent() {
@@ -23,6 +24,7 @@ function AppContent() {
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/services/:serviceType" element={<ServicePage />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
             <Footer />
         </div>
