@@ -6,6 +6,7 @@ import AboutUs from './pages/AboutUs';
 import Services from './pages/Services';
 import Blog from './pages/Blog';
 import FAQ from './pages/FAQ';
+import Gallery from './pages/Gallery';
 import Contact from './pages/Contact';
 import ServicePage from './pages/ServicePage';
 import NotFound from './pages/NotFound';
@@ -22,6 +23,7 @@ function AppContent() {
                 <Route path="/services" element={<Services />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/faq" element={<FAQ />} />
+                <Route path="/gallery" element={<Gallery />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/services/:serviceType" element={<ServicePage />} />
                 <Route path="*" element={<NotFound />} />

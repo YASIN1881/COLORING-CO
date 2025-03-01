@@ -1,6 +1,6 @@
 import './NavBar.css';
 import { useState, useEffect } from "react";
-import { FaInstagram, FaHome, FaInfoCircle, FaTools, FaQuestionCircle, FaEnvelope } from "react-icons/fa";
+import { FaInstagram, FaHome, FaInfoCircle, FaTools, FaQuestionCircle, FaEnvelope, FaImages } from "react-icons/fa";
 import { HiMenu, HiX } from "react-icons/hi";
 import { MdEmail, MdPhone } from "react-icons/md";
 import { IoIosArrowForward } from "react-icons/io";
@@ -131,6 +131,7 @@ export default function NavBar() {
         },
         // { text: "Blog", href: "/blog", icon: <FaBlog className="w-5 h-5" /> },
         { text: "FAQ", href: "/faq", icon: <FaQuestionCircle className="w-5 h-5" /> },
+        { text: "Gallery", href: "/gallery", icon: <FaImages className="w-5 h-5" /> },
         { text: "Contact", href: "/contact", icon: <FaEnvelope className="w-5 h-5" /> },
     ];
 

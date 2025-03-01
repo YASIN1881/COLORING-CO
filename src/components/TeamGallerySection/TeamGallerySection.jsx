@@ -77,7 +77,7 @@ function TeamGallerySection({ teamMembers }) {
                   <p className="text-white/90 text-sm sm:text-base mb-6 transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100 drop-shadow-md">
                     {index === 0 ? 
                       "Painting Specialist & company owner. Leading our vision with expertise in both commercial and residential painting services." :
-                      "Bringing creative excellence to every residential and commercial painting project."}
+                      "Bringing creative excellence to every residential, commercial and mural painting project."}
                   </p>
 
                   {/* Social Icons */}
