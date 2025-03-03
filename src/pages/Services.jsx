@@ -16,7 +16,6 @@ const services = [
             "Commercial Painting",
             "Industrial Painting",
             "Special Finishes",
-            "Wallpaper Installation"
         ],
         images: [
             "/img/service-3-1.jpg",
