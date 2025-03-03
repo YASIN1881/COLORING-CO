@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import WOW from 'wow.js';
 import { HiHome, HiTemplate, HiCube } from 'react-icons/hi';
-import { MdArchitecture, MdDesignServices, MdConstruction, MdOutlineHomeWork } from 'react-icons/md';
+import { MdArchitecture, MdDesignServices, MdConstruction } from 'react-icons/md';
 
 const Features = () => {
     const [hoveredId, setHoveredId] = useState(null);
@@ -20,11 +20,11 @@ const Features = () => {
     const features = [
         { 
             id: 1, 
-            title: 'Architectural Design',
-            description: 'Creating innovative and sustainable architectural solutions tailored to your lifestyle',
-            icon: <MdArchitecture className="w-12 h-12" />,
+            title: 'Painting Excellence',
+            description: 'Professional painting services with attention to detail and premium finishes',
+            icon: <MdDesignServices className="w-12 h-12" />,
             color: 'amber',
-            stats: ['100+ Projects', '15+ Awards', '10+ Years']
+            stats: ['1000+ Projects', 'Premium Materials', 'Expert Painters']
         },
         { 
             id: 2, 
@@ -44,11 +44,11 @@ const Features = () => {
         },
         { 
             id: 4, 
-            title: 'Project Development',
-            description: 'Full-scale construction project management from concept to completion',
-            icon: <MdOutlineHomeWork className="w-12 h-12" />,
+            title: 'Architectural Design',
+            description: 'Creating innovative and sustainable architectural solutions tailored to your lifestyle',
+            icon: <MdArchitecture className="w-12 h-12" />,
             color: 'amber',
-            stats: ['50+ Developments', 'Expert Team', 'Turn-key Solutions']
+            stats: ['100+ Projects', '15+ Awards', '10+ Years']
         },
     ];
 
