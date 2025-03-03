@@ -109,14 +109,14 @@ export default function Gallery() {
     { id: "renovation", label: "Renovation" }
   ];
 
-  // Generate gallery items from 1 to 21
+  // Generate gallery items from 1 to 22
   const generateGalleryItems = () => {
     const items = [];
-    for (let i = 1; i <= 21; i++) {
+    for (let i = 1; i <= 22; i++) {
       // Determine if it's a video based on the file number
-      // According to the user, files 4-9 are videos (.mp4)
+      // Files 4-9 and 22 are videos (.mp4)
       // Files 1-3 and 10-21 are images (.jpg)
-      const isVideo = i >= 4 && i <= 9;
+      const isVideo = (i >= 4 && i <= 9) || i === 22;
       
       // Create the file path based on the file type
       const filePath = `/img/Gallery/${i}${isVideo ? '.mp4' : '.jpg'}`;
