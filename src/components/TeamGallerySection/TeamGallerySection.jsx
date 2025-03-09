@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin } from 'lucide-react'
+import { Instagram } from 'lucide-react'
 import PropTypes from 'prop-types'
 import './TeamGallerySection.css'
 
@@ -82,20 +82,18 @@ function TeamGallerySection({ teamMembers }) {
 
                   {/* Social Icons */}
                   <div className="flex gap-3 transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-200">
-                    {member.social?.facebook && (
-                      <div className="social-icon w-10 h-10 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer border border-white/20 hover:bg-amber-500 transition-all duration-300">
-                        <Facebook size={18} className="text-white" />
-                      </div>
-                    )}
                     {member.social?.instagram && (
-                      <div className="social-icon w-10 h-10 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer border border-white/20 hover:bg-amber-500 transition-all duration-300">
-                        <Instagram size={18} className="text-white" />
-                      </div>
-                    )}
-                    {member.social?.linkedin && (
-                      <div className="social-icon w-10 h-10 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer border border-white/20 hover:bg-amber-500 transition-all duration-300">
-                        <Linkedin size={18} className="text-white" />
-                      </div>
+                      <a 
+                        href="https://www.instagram.com/_coloringco/" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        aria-label="Instagram Profile"
+                        className="block"
+                      >
+                        <div className="social-icon w-10 h-10 rounded-full flex items-center justify-center bg-white/10 backdrop-blur-sm cursor-pointer border border-white/20 hover:bg-amber-500 transition-all duration-300">
+                          <Instagram size={18} className="text-white" />
+                        </div>
+                      </a>
                     )}
                   </div>
                 </div>

@@ -16,9 +16,7 @@ const teamMembers = [
         role: 'CEO & Founder',
         image: '/img/peter_rasuli_hd.webp',
         social: {
-          facebook: true,
           instagram: true,
-          linkedin: true
         }
     },
     {
@@ -26,9 +24,7 @@ const teamMembers = [
         role: 'Lead Designer',
         image: '/img/elli_ansari_hd.webp',
         social: {
-          facebook: true,
           instagram: true,
-          linkedin: true
         }
     }
 ];

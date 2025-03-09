@@ -170,7 +170,7 @@ const FAQCategory = ({ category, activeQuestionId, setActiveQuestionId }) => (
                             <div className={`relative w-6 h-6 flex items-center justify-center transition-transform duration-300
                                 ${activeQuestionId === item.id ? 'rotate-180' : ''}`}>
                                 <span className={`text-2xl font-normal select-none
-                                    ${activeQuestionId === item.id ? 'text-amber-500' : 'text-white'}`}>
+                                    ${activeQuestionId === item.id ? 'text-white' : 'text-amber-500'}`}>
                                     {activeQuestionId === item.id ? '−' : '+'}
                                 </span>
                             </div>
