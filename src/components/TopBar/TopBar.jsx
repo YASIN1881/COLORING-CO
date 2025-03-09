@@ -14,9 +14,9 @@ export default function TopBar() {
                             <IoLocationSharp size={20} className="text-amber-500"/>
                             Melbourne, Australia
                         </a>
-                        <a href="mailto:info@coloringco.com.au" className="flex items-center gap-1 lg:gap-2 hover:text-amber-500 transition-all duration-300 transform hover:scale-105 cursor-pointer">
+                        <a href="mailto:quote@coloringco.com.au" className="flex items-center gap-1 lg:gap-2 hover:text-amber-500 transition-all duration-300 transform hover:scale-105 cursor-pointer">
                             <MdEmail size={20} className="text-amber-500"/>
-                            info@coloringco.com.au
+                            quote@coloringco.com.au
                         </a>
                         <div className="flex flex-row items-center gap-2">
                             <a href="tel:0413709050" className="flex items-center gap-1 lg:gap-2 hover:text-amber-500 transition-all duration-300 transform hover:scale-105 cursor-pointer">

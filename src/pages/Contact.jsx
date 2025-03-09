@@ -57,7 +57,7 @@ export default function Contact() {
             icon: <MdEmail className="text-white text-2xl" />,
             title: "Support Email",
             details: ["info@coloringco.com.au"],
-            link: "mailto:info@coloringco.com.au",
+            link: "mailto:quote@coloringco.com.au",
             delay: 0.3
         }
     ];

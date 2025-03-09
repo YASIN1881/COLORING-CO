@@ -19,7 +19,7 @@ Best regards,
 Prospective Client
         `.trim();
 
-        const mailtoLink = `mailto:info@coloringco.com.au?subject=Free Consultation Request&body=${encodeURIComponent(emailContent)}`;
+        const mailtoLink = `mailto:quote@coloringco.com.au?subject=Free Consultation Request&body=${encodeURIComponent(emailContent)}`;
         window.location.href = mailtoLink;
     };
 

@@ -50,7 +50,7 @@ Coloring Co Quote System
     `.trim();
 
     try {
-      const mailtoLink = `mailto:info@coloringco.com.au?subject=New Quote Request&body=${encodeURIComponent(emailContent)}`;
+      const mailtoLink = `mailto:quote@coloringco.com.au?subject=New Quote Request&body=${encodeURIComponent(emailContent)}`;
       window.location.href = mailtoLink;
       
       setSubmitStatus({ show: true, isSuccess: true });
@@ -262,10 +262,10 @@ Coloring Co Quote System
                 </a>
               </li>
               <li>
-                <a href="mailto:info@coloringco.com.au" className="relative flex items-center gap-3 text-gray-400 hover:text-amber-500 transition-colors duration-500 group">
+                <a href="mailto:quote@coloringco.com.au" className="relative flex items-center gap-3 text-gray-400 hover:text-amber-500 transition-colors duration-500 group">
                   <MdEmail size={20} className="text-amber-500 flex-shrink-0" />
                   <span className="relative">
-                    info@coloringco.com.au
+                    quote@coloringco.com.au
                     <span className="absolute left-0 bottom-0 w-0 h-[2px] bg-amber-500 transition-all duration-500 group-hover:w-full"></span>
                   </span>
                 </a>
