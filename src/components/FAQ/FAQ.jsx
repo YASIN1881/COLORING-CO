@@ -161,16 +161,16 @@ const FAQCategory = ({ category, activeQuestionId, setActiveQuestionId }) => (
                     >
                         <button
                             onClick={() => setActiveQuestionId(activeQuestionId === item.id ? null : item.id)}
-                            className="w-full px-8 py-5 flex items-center justify-between group"
+                            className="w-full px-8 py-5 flex items-center justify-between"
                         >
                             <span className={`font-medium text-lg transition-colors duration-300 text-left
-                                ${activeQuestionId === item.id ? 'text-white' : 'text-white'}`}>
+                                ${activeQuestionId === item.id ? 'text-white' : 'text-white hover:text-white'}`}>
                                 {item.question}
                             </span>
                             <div className={`relative w-6 h-6 flex items-center justify-center transition-transform duration-300
                                 ${activeQuestionId === item.id ? 'rotate-180' : ''}`}>
                                 <span className={`text-2xl font-normal select-none
-                                    ${activeQuestionId === item.id ? 'text-white' : 'text-amber-500'}`}>
+                                    ${activeQuestionId === item.id ? 'text-white' : 'text-amber-500 hover:text-amber-500'}`}>
                                     {activeQuestionId === item.id ? '−' : '+'}
                                 </span>
                             </div>
