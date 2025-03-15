@@ -1,7 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 const Testimonials = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const [trustpilotLoaded, setTrustpilotLoaded] = useState(false);
+    const trustpilotContainerRef = useRef(null);
 
     const testimonials = [
         {
@@ -36,6 +38,33 @@ const Testimonials = () => {
         }, 5000);
 
         return () => clearInterval(timer);
+    }, []);
+
+    // Add Trustpilot widget script
+    useEffect(() => {
+        // Load the Trustpilot widget script
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = '//widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js';
+        script.async = true;
+        
+        // Set up event listener to detect when Trustpilot widgets are loaded
+        window.addEventListener('load', function() {
+            // Check if Trustpilot iframe exists after a small delay
+            setTimeout(() => {
+                const tpIframe = document.querySelector('.trustpilot-widget iframe');
+                if (tpIframe) {
+                    setTrustpilotLoaded(true);
+                }
+            }, 1500);
+        });
+        
+        document.head.appendChild(script);
+
+        // Clean up the script when component unmounts
+        return () => {
+            document.head.removeChild(script);
+        };
     }, []);
 
     const nextSlide = () => {
@@ -160,6 +189,89 @@ const Testimonials = () => {
                                     →
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Trustpilot Section */}
+                <div className="mt-12 md:mt-16 max-w-4xl mx-auto">
+                    <div className="text-center mb-8">
+                        <div className="flex items-center justify-center gap-2 mb-3">
+                            <img 
+                                src="https://cdn.trustpilot.net/brand-assets/4.1.0/stars/stars-5.svg" 
+                                alt="Trustpilot 5 Stars" 
+                                className="w-20 h-5 sm:w-24 sm:h-6 object-contain"
+                            />
+                            <span className="text-amber-500 uppercase tracking-wider text-sm font-medium">
+                                Trustpilot Reviews
+                            </span>
+                        </div>
+                        <h3 className="text-2xl lg:text-3xl font-bold mb-3 bg-gradient-to-r from-amber-500 via-amber-300 to-amber-500 bg-clip-text text-transparent transform hover:scale-105 transition-all duration-300">
+                            See What Clients Say on Trustpilot
+                        </h3>
+                    </div>
+
+                    {/* Trustpilot Widget Container */}
+                    <div 
+                        ref={trustpilotContainerRef} 
+                        className="bg-amber-500/10 rounded-3xl p-5 sm:p-6 backdrop-blur-sm relative overflow-hidden hover:bg-amber-500/15 transition-all duration-500"
+                    >
+                        {/* Animated background effect */}
+                        <div className="absolute inset-0 bg-[url('/img/service-bg-3-1.png')] bg-cover bg-center opacity-5"></div>
+                        
+                        {/* Border glow effect */}
+                        <div className="absolute inset-0 border border-amber-500/30 rounded-3xl"></div>
+                        
+                        {/* Trustpilot Widget (hidden if fallback is shown) */}
+                        <div 
+                            className={`trustpilot-widget relative z-10 ${trustpilotLoaded ? 'block' : 'hidden'}`}
+                            data-locale="en-AU" 
+                            data-template-id="5419b6ffb0d04a076446a9af" 
+                            data-businessunit-id="65e15e2ffb3af3a4e53a3fa0" 
+                            data-style-height="150px" 
+                            data-style-width="100%" 
+                            data-theme="dark" 
+                            data-stars="1,2,3,4,5" 
+                            data-no-reviews="show"
+                        >
+                            <a href="https://www.trustpilot.com/review/coloringco.com.au" target="_blank" rel="noopener">
+                                <span className="text-amber-100 hover:text-amber-300 transition-colors duration-300">
+                                    Check our Trustpilot reviews
+                                </span>
+                            </a>
+                        </div>
+                        
+                        {/* Fallback content if widget doesn't load properly */}
+                        <div className={`${trustpilotLoaded ? 'hidden' : 'block'} bg-amber-500/20 p-5 rounded-2xl relative z-10 border border-amber-500/30`}>
+                            <div className="flex items-center gap-2 mb-3">
+                                <div className="flex text-amber-500 text-lg">★★★★★</div>
+                                <span className="text-amber-100 font-semibold text-sm">5.0 / 5.0</span>
+                            </div>
+                            
+                            <div className="relative pl-5">
+                                <span className="absolute left-0 top-0 text-amber-500 text-xl font-serif">&ldquo;</span>
+                                <p className="text-amber-100 italic text-base mb-2">
+                                    I had the pleasure of hiring Peter to paint my house, and I couldn&apos;t be more satisfied with the results. This was the second time I&apos;ve worked with him; the first was in 2016 for my previous house. His work is exceptional - very clean, high-quality, and done with great attention to detail.
+                                </p>
+                                <div className="text-amber-300 font-medium text-sm">
+                                    - Reza Rasuli Gandomani
+                                    <span className="text-amber-100/70 text-xs ml-2 font-normal">
+                                        (December 2024)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {/* View more link - made more compact */}
+                        <div className="mt-4 text-center">
+                            <a 
+                                href="https://www.trustpilot.com/review/coloringco.com.au" 
+                                target="_blank" 
+                                rel="noopener" 
+                                className="inline-block px-6 py-2 bg-amber-500 text-gray-900 font-semibold rounded-full text-sm hover:bg-amber-400 transition-all duration-300 transform hover:scale-105 shadow-lg"
+                            >
+                                View on Trustpilot
+                            </a>
                         </div>
                     </div>
                 </div>
